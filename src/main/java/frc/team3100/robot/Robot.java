@@ -8,10 +8,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team3100.robot.subsystems.CamServo;
 import frc.team3100.robot.subsystems.MainDrive;
 import frc.team3100.robot.subsystems.Shooter;
-import org.opencv.core.Mat;
 
 
-public class Robot extends IterativeRobot{
+public class    Robot extends IterativeRobot{
 
     public static MainDrive drive;
     public static Shooter shooter;

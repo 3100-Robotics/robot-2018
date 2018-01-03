@@ -8,9 +8,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team3100.robot.RobotMap;
 import frc.team3100.robot.commands.Drive;
 
-/**
- * Created by nicco on 2/14/17.
- */
 
 public class MainDrive extends PIDSubsystem {
 
