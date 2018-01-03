@@ -7,13 +7,13 @@ import edu.wpi.first.wpilibj.interfaces.Gyro;
 public class RobotMap {
 
     public static int controller = 1;
-    private static int leftDriveChannel = 5;
-    private static int rightDriveChannel = 6;
+    private static int leftDriveChannel = 0;
+    private static int rightDriveChannel = 1;
     private static int shootChannel = 3;
-    public static int ballFeederChanel = 2;
-    private static int tankCycleMotor = 4;
-    private static int servoX = 8;
-    private static int servoY = 9;
+    public static int ballFeederChanel = 9;
+    private static int tankCycleMotor = 6;
+    private static int servoX = 5;
+    private static int servoY = 4;
 
     public static XBoxController controls = new XBoxController(controller);
 

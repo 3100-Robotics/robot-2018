@@ -25,7 +25,7 @@ public class Drive extends Command {
     @Override
     protected void execute() {
         if(Robot.autoVal == false) {
-            drive.drive(controller.getLeftStickY(), controller.getRightStickX());
+            drive.drive(controller.getLeftStickY(), controller.getLeftStickX());
         } else {
             drive.drive(1,0);
             Timer.delay(2);
