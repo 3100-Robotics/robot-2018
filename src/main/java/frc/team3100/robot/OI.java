@@ -2,26 +2,47 @@ package frc.team3100.robot;
 
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc.team3100.robot.commands.Shoot;
-import static frc.team3100.robot.RobotMap.controls;
+import frc.team3100.robot.commands.*;
 
 
 public class OI {
 
-    private XBoxController controller = controls;
-    private Button shootButton = new JoystickButton(controller, XBoxController.leftBumper);
+    private XBoxDrive driveControls = RobotMap.driveControls;
+    private XBoxTech techControls = RobotMap.techControls;
+
+    private Button vaultLevel = new JoystickButton(techControls, XBoxTech.xButton);
+    private Button clawYToggle = new JoystickButton(techControls, XBoxTech.aButton);
+    private Button collectToggle = new JoystickButton(techControls, XBoxTech.bButton);
+    private Button clawXToggle = new JoystickButton(techControls, XBoxTech.leftBumper);
 
     public boolean shootState = true;
+    public boolean clawYState = false;
+    public boolean clawXState = true;
+    public int elevatorLevel = 0;
 
     public double getDriveMoveSpeed() {
-            return controls.getLeftStickY();
+            return driveControls.getLeftStickY();
         }
 
-    public double getRotateSpeed() {return controls.getRightStickX(); }
+    public double getRotateSpeed() {return driveControls.getRightStickX(); }
 
-    public double getModifier() { return controls.getRightTrigger(); }
+    public OI() {
+        vaultLevel.whenPressed(new ElevatorVault());
+        clawXToggle.whenPressed(new CubeGrab());
+        clawYToggle.whenPressed(new ClawDrop());
+        int checkVal = techControls.getPOV();
+        if(checkVal == 0) {
+            new ElevatorHigh();
+        } else if(checkVal == 90) {
+            new ElevatorSwitch();
+        } else if(checkVal == 180) {
+            new ElevatorLow();
+        } else if(checkVal == 270) {
+            new ElevatorMid();
+        }
 
-    public OI() { shootButton.whenPressed(new Shoot()); }
+
+    }
 
 
 }

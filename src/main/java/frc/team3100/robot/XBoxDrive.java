@@ -2,7 +2,7 @@ package frc.team3100.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 
-public class XBoxController extends Joystick {
+public class XBoxDrive extends Joystick {
 
         public static final int rightXAxis = 4;
         public static final int rightYAxis = 5;
@@ -20,7 +20,7 @@ public class XBoxController extends Joystick {
         public static final int rightTrigger = 2;
         public static final int leftTrigger = 3;
 
-    public XBoxController(int port) {
+    public XBoxDrive(int port) {
             super(port);
         }
 

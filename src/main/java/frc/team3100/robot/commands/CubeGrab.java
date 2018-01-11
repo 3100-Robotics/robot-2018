@@ -3,8 +3,8 @@ package frc.team3100.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.team3100.robot.Robot;
 
-public class Shoot extends Command {
-    public Shoot() {
+public class CubeGrab extends Command {
+    public CubeGrab() {
         super("Shoot");
         requires(Robot.shooter);
 
@@ -33,6 +33,8 @@ public class Shoot extends Command {
     }
 
     public void interrupted() {
+        Robot.shooter.stopShooting();
+        Robot.oi.shootState = true;
 
     }
 }

@@ -4,15 +4,12 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.team3100.robot.Robot;
 import frc.team3100.robot.subsystems.MainDrive;
 
-import static frc.team3100.robot.Robot.shooter;
-
 
 public class Auto extends Command {
 
     public Auto() {
         super("Auto");
         requires(Robot.drive);
-        requires(shooter);
 
     }
 
@@ -25,7 +22,7 @@ public class Auto extends Command {
 
     @Override
     protected void execute() {
-        shooter.shoot();
+
     }
 
 

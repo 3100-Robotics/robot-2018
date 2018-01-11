@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.team3100.robot.Robot;
 import frc.team3100.robot.RobotMap;
-import frc.team3100.robot.XBoxController;
+import frc.team3100.robot.XBoxDrive;
 import frc.team3100.robot.subsystems.MainDrive;
 
 public class Drive extends Command {
@@ -15,7 +15,7 @@ public class Drive extends Command {
         requires(Robot.drive);
     }
     private static MainDrive drive = Robot.drive;
-    private static XBoxController controller = RobotMap.controls;
+    private static XBoxDrive controller = RobotMap.driveControls;
 
     @Override
     protected void initialize() {
@@ -24,15 +24,7 @@ public class Drive extends Command {
 
     @Override
     protected void execute() {
-        if(Robot.autoVal == false) {
-            drive.drive(controller.getLeftStickY(), controller.getLeftStickX());
-        } else {
-            drive.drive(1,0);
-            Timer.delay(2);
-            drive.drive(0,0);
-
-        }
-
+        drive.drive(controller.getLeftStickY(), controller.getLeftStickX());
     }
 
 
