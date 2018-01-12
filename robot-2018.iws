@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f7dee1ae-a10b-4483-9a2f-f8eb64f464ed" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/robot-2018.iws" afterPath="$PROJECT_DIR$/robot-2018.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/frc/team3100/robot/OI.java" afterPath="$PROJECT_DIR$/src/main/java/frc/team3100/robot/OI.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/frc/team3100/robot/Robot.java" afterPath="$PROJECT_DIR$/src/main/java/frc/team3100/robot/Robot.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/frc/team3100/robot/RobotMap.java" afterPath="$PROJECT_DIR$/src/main/java/frc/team3100/robot/RobotMap.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/frc/team3100/robot/XBoxDrive.java" afterPath="$PROJECT_DIR$/src/main/java/frc/team3100/robot/XBoxDrive.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/frc/team3100/robot/XBoxTech.java" afterPath="$PROJECT_DIR$/src/main/java/frc/team3100/robot/XBoxTech.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/frc/team3100/robot/subsystems/Claw.java" afterPath="$PROJECT_DIR$/src/main/java/frc/team3100/robot/subsystems/Claw.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/frc/team3100/robot/subsystems/Elevator.java" afterPath="$PROJECT_DIR$/src/main/java/frc/team3100/robot/subsystems/Elevator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/frc/team3100/robot/subsystems/MainDrive.java" afterPath="$PROJECT_DIR$/src/main/java/frc/team3100/robot/subsystems/MainDrive.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/frc/team3100/robot/subsystems/Platform.java" afterPath="$PROJECT_DIR$/src/main/java/frc/team3100/robot/subsystems/Platform.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -101,16 +92,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlatformRelease.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/frc/team3100/robot/commands/PlatformRelease.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Elevator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/frc/team3100/robot/subsystems/Elevator.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -144,11 +125,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Claw.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Claw.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/frc/team3100/robot/subsystems/Claw.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
+            <state relative-caret-position="-60">
               <caret line="20" column="101" lean-forward="false" selection-start-line="20" selection-start-column="101" selection-end-line="20" selection-end-column="101" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="build.gradle" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/build.gradle">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="58" lean-forward="false" selection-start-line="4" selection-start-column="58" selection-end-line="4" selection-end-column="58" />
               <folding />
             </state>
           </provider>
@@ -694,7 +685,6 @@
         <option value="$PROJECT_DIR$/src/main/java/frc/team3100/robot/subsystems/Shooter.java" />
         <option value="$PROJECT_DIR$/src/main/java/frc/team3100/robot/XBoxController.java" />
         <option value="$PROJECT_DIR$/src/main/java/frc/team3100/robot/commands/CameraMotion.java" />
-        <option value="$PROJECT_DIR$/build.gradle" />
         <option value="$PROJECT_DIR$/src/main/java/frc/team3100/robot/commands/Shoot.java" />
         <option value="$PROJECT_DIR$/src/main/java/frc/team3100/robot/subsystems/CamServo.java" />
         <option value="$PROJECT_DIR$/src/main/java/frc/team3100/robot/commands/CubeGrab.java" />
@@ -723,6 +713,7 @@
         <option value="$PROJECT_DIR$/src/main/java/frc/team3100/robot/subsystems/MainDrive.java" />
         <option value="$PROJECT_DIR$/src/main/java/frc/team3100/robot/subsystems/Elevator.java" />
         <option value="$PROJECT_DIR$/src/main/java/frc/team3100/robot/subsystems/Claw.java" />
+        <option value="$PROJECT_DIR$/build.gradle" />
       </list>
     </option>
   </component>
@@ -730,7 +721,7 @@
     <option name="LAST_EDITED_MODULE_NAME" />
     <option name="LAST_EDITED_TAB_NAME" />
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="26" />
     <option name="y" value="23" />
     <option name="width" value="1414" />
@@ -953,7 +944,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="26" y="23" width="1414" height="877" extended-state="0" />
+    <frame x="26" y="23" width="1414" height="877" extended-state="1" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1090,14 +1081,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/frc/team3100/robot/commands/CameraMotion.java" />
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="22" column="5" lean-forward="false" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/frc/team3100/robot/subsystems/Shooter.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/frc/team3100/robot/commands/Shoot.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/frc/team3100/robot/subsystems/CamServo.java" />
@@ -1306,8 +1289,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/frc/team3100/robot/subsystems/Claw.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
+        <state relative-caret-position="-60">
           <caret line="20" column="101" lean-forward="false" selection-start-line="20" selection-start-column="101" selection-end-line="20" selection-end-column="101" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="58" lean-forward="false" selection-start-line="4" selection-start-column="58" selection-end-line="4" selection-end-column="58" />
           <folding />
         </state>
       </provider>
@@ -1380,7 +1371,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.38868275" />
+                <option value="0.39795917" />
               </list>
             </option>
           </splitter-proportions>

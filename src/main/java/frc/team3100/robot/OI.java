@@ -18,11 +18,13 @@ public class OI {
     private Button clawXToggle = new JoystickButton(techControls, XBoxTech.leftBumper);
 
     // Defining state variables to log the states of different subsystems
-    public boolean shootState = true;
+    //In low position = true
     public boolean clawYState = false;
+    //Grabbed onto cube = true
     public boolean clawXState = true;
+    // starting position = 0
     public int elevatorLevel = 0;
-    public String elevatorPosition = "pickup";
+
 
 
     public double getDriveMoveSpeed() {
