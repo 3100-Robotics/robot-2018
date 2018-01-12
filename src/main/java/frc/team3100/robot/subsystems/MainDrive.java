@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team3100.robot.RobotMap;
 import frc.team3100.robot.commands.Drive;
 
+// Reminder to future me: Remake this to integrate the two photoelectric sensors instead of using a PID!
 
 public class MainDrive extends PIDSubsystem {
 

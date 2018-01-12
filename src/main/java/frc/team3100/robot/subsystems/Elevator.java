@@ -9,7 +9,7 @@ import frc.team3100.robot.RobotMap;
 
 public class Elevator extends Subsystem {
 
-
+    // Defining objects from RobotMap that control the elevator
     private static SpeedController elevatorMotor = RobotMap.elevatorMotor;
 
 
@@ -19,6 +19,7 @@ public class Elevator extends Subsystem {
 
     }
 
+    // Preset heights the elevator needs to reach during a match. Simplifies robot control.
 
     public void vault() {
 
@@ -39,9 +40,10 @@ public class Elevator extends Subsystem {
 
     }
 
+    // Allows manual control for more fine movement of the elevator, scaled to be more precise
     public void manual(double speed) {
         if(Math.abs(speed) > 0.05) {
-            elevatorMotor.set(speed);
+            elevatorMotor.set(speed * 0.9);
         }
     }
 

@@ -11,6 +11,7 @@ import frc.team3100.robot.subsystems.*;
 
 public class Robot extends IterativeRobot{
 
+    // Define subsystems for Commands to access
     public static Claw claw;
     public static Elevator elevator;
     public static Platform platform;
@@ -18,6 +19,7 @@ public class Robot extends IterativeRobot{
 
     public static OI oi;
 
+    // Define variables used later in the Robot class
     public static boolean autoVal;
     public String gameData;
     private static final int IMG_WIDTH = 320;
@@ -45,23 +47,37 @@ public class Robot extends IterativeRobot{
 
 
     public void autonomousInit() {
+        // What to run ONCE at the beginning of the autonomous period
         gameData = DriverStation.getInstance().getGameSpecificMessage();
         autoVal = true;
-
     }
 
     public void autonomousPeriodic() {
+        // Running auto code for the first 15 seconds of the match.
         Scheduler.getInstance().run();
+    }
 
+    public void teleopInit() {
+        // Setting autoVal equal to false so the auto code stops running
+        autoVal = false;
     }
 
     public void teleopPeriodic() {
-        autoVal = false;
+        // Starts the scheduler for the teleop period to run the commands
         Scheduler.getInstance().run();
     }
 
-    public void testPeriodic() {
+
+
+    // Test shouldn't ever run during a match; it is only used to set variables and debug the program
+
+     public void testInit() {
+        // Setting autoVal equal to false so the auto code doesn't run.
         autoVal = false;
+    }
+
+    public void testPeriodic() {
+        // Starts the scheduler to test different commands.
         Scheduler.getInstance().run();
     }
 

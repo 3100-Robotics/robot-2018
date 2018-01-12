@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.Joystick;
 
 public class XBoxDrive extends Joystick {
 
+        //Setup all of the ports on the XBox controller
         public static final int rightXAxis = 4;
         public static final int rightYAxis = 5;
         public static final int leftXAxis = 0;
@@ -24,6 +25,7 @@ public class XBoxDrive extends Joystick {
             super(port);
         }
 
+        // set up methods to retrieve the values from variable inputs on the controller.
         public double getRightStickX() {
             return getRawAxis(rightXAxis);
         }

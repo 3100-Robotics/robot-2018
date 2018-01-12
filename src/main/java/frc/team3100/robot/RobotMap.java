@@ -7,8 +7,8 @@ import edu.wpi.first.wpilibj.interfaces.Gyro;
 public class RobotMap {
 
     //     C O N T R O L L E R S
-    public static int driveController = 1;
-    public static int techController = 2;
+    private static int driveController = 1;
+    private static int techController = 2;
 
     //     P W M
     private static int driveLeftChannel = 0;
@@ -29,9 +29,7 @@ public class RobotMap {
     private static int driveRightEncoderChannel = 1;
     private static int elevatorLevelChannel = 2;
 
-    /*********************** Initializing everything *********************************
-     *  Here's where we create all of the motor, sensor, etc. objects for the robot. *
-     *********************************************************************************/
+
 
 
     //    Initialize Xbox controllers
