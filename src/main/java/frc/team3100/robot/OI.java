@@ -24,7 +24,8 @@ public class OI {
     public boolean clawXState = true;
     // starting position = 0
     public int elevatorLevel = 0;
-
+    // target elevator position
+    public int elevatorTarget;
 
 
     public double getDriveMoveSpeed() {
@@ -37,20 +38,20 @@ public class OI {
     public OI() {
 
         // Run commands based on button presses
-        vaultLevel.whenPressed(new ElevatorVault());
+        vaultLevel.whenPressed(new);
         clawXToggle.whenPressed(new ClawGrab());
         clawYToggle.whenPressed(new ClawDrop());
 
         // Run commands based on D-Pad presses
         int checkVal = techControls.getPOV();
         if(checkVal == 0) {
-            new ElevatorHigh();
+            elevatorTarget = 5;
         } else if(checkVal == 90) {
-            new ElevatorSwitch();
+            elevatorTarget = 2;
         } else if(checkVal == 180) {
-            new ElevatorLow();
+            elevatorTarget = 3;
         } else if(checkVal == 270) {
-            new ElevatorMid();
+            elevatorTarget = 4;
         }
 
 

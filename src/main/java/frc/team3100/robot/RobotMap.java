@@ -18,17 +18,16 @@ public class RobotMap {
     private static int clawRightChannel = 4;
     private static int platformChannel = 5;
 
-    //     D I O
+    //     P C M
     private static int clawGrabLChannel = 0;
     private static int clawGrabRChannel = 1;
     private static int clawRotateChannel = 2;
     private static int platformDropChannel = 3;
 
-    //     P C M
+    //     D I O
     private static int driveLeftEncoderChannel = 0;
     private static int driveRightEncoderChannel = 1;
     private static int elevatorLevelChannel = 2;
-
 
 
 

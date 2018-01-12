@@ -5,8 +5,8 @@ import frc.team3100.robot.Robot;
 
 public class PlatformRelease extends Command {
     public PlatformRelease() {
-        super("Shoot");
-        requires(Robot.shooter);
+        super("PlatfromRelease");
+        requires(Robot.platform);
 
     }
 

@@ -4,8 +4,8 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.team3100.robot.Robot;
 import frc.team3100.robot.subsystems.Elevator;
 
-public class ElevatorMid extends Command {
-    public ElevatorMid() {
+public class ElevatorAuto extends Command {
+    public ElevatorAuto() {
         super("ElevatorMid");
         requires(Robot.elevator);
 

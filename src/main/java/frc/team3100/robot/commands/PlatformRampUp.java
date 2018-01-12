@@ -5,8 +5,8 @@ import frc.team3100.robot.Robot;
 
 public class PlatformRampUp extends Command {
     public PlatformRampUp() {
-        super("Shoot");
-        requires(Robot.shooter);
+        super("PlatfromRampUp");
+        requires(Robot.platform);
 
     }
 
