@@ -3,8 +3,8 @@ package frc.team3100.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.team3100.robot.Robot;
 
-public class CubeGrab extends Command {
-    public CubeGrab() {
+public class PlatformRelease extends Command {
+    public PlatformRelease() {
         super("Shoot");
         requires(Robot.shooter);
 

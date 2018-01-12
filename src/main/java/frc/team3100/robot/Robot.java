@@ -19,23 +19,25 @@ public class Robot extends IterativeRobot{
     public static OI oi;
 
     public static boolean autoVal;
-    public float driveTest;
     public String gameData;
     private static final int IMG_WIDTH = 320;
     private static final int IMG_HEIGHT = 240;
 
 
     public void robotInit() {
+
+        //creating a camera object and defining its characteristics
         UsbCamera server = CameraServer.getInstance().startAutomaticCapture("cam0", 0);
         server.setBrightness(20);
         server.setResolution(IMG_WIDTH, IMG_HEIGHT);
-        driveTest = 0;
 
+        //Creates instances of all of the subsystems for the commands to access.
         claw = new Claw();
         elevator = new Elevator();
         platform = new Platform();
         drive = new MainDrive();
 
+        // ALWAYS initialize OI last
         oi = new OI();
 
         SmartDashboard.putData("MainDrive", drive);

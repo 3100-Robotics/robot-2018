@@ -19,6 +19,7 @@ public class OI {
     public boolean clawYState = false;
     public boolean clawXState = true;
     public int elevatorLevel = 0;
+    public String elevatorPosition = "pickup";
 
     public double getDriveMoveSpeed() {
             return driveControls.getLeftStickY();
@@ -27,9 +28,11 @@ public class OI {
     public double getRotateSpeed() {return driveControls.getRightStickX(); }
 
     public OI() {
+
         vaultLevel.whenPressed(new ElevatorVault());
-        clawXToggle.whenPressed(new CubeGrab());
+        clawXToggle.whenPressed(new ClawGrab());
         clawYToggle.whenPressed(new ClawDrop());
+
         int checkVal = techControls.getPOV();
         if(checkVal == 0) {
             new ElevatorHigh();

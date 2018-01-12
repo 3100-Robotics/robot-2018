@@ -39,7 +39,10 @@ public class Elevator extends Subsystem {
 
     }
 
-    public void manual() {
-
+    public void manual(double speed) {
+        if(Math.abs(speed) > 0.05) {
+            elevatorMotor.set(speed);
+        }
     }
+
 }

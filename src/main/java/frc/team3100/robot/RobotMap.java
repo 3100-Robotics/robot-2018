@@ -6,9 +6,11 @@ import edu.wpi.first.wpilibj.interfaces.Gyro;
 
 public class RobotMap {
 
+    //     C O N T R O L L E R S
     public static int driveController = 1;
     public static int techController = 2;
 
+    //     P W M
     private static int driveLeftChannel = 0;
     private static int driveRightChannel = 1;
     private static int elevatorChannel = 2;
@@ -16,19 +18,27 @@ public class RobotMap {
     private static int clawRightChannel = 4;
     private static int platformChannel = 5;
 
+    //     D I O
     private static int clawGrabLChannel = 0;
     private static int clawGrabRChannel = 1;
     private static int clawRotateChannel = 2;
     private static int platformDropChannel = 3;
 
+    //     P C M
     private static int driveLeftEncoderChannel = 0;
     private static int driveRightEncoderChannel = 1;
     private static int elevatorLevelChannel = 2;
 
+    /*********************** Initializing everything *********************************
+     *  Here's where we create all of the motor, sensor, etc. objects for the robot. *
+     *********************************************************************************/
 
+
+    //    Initialize Xbox controllers
     public static XBoxDrive driveControls = new XBoxDrive(driveController);
     public static XBoxTech techControls = new XBoxTech(techController);
 
+    //    Initialize speed controllers
     public static SpeedController leftMotor = new Spark(driveLeftChannel);
     public static SpeedController rightMotor = new Spark(driveRightChannel);
     public static SpeedController elevatorMotor = new Spark(elevatorChannel);
@@ -36,13 +46,13 @@ public class RobotMap {
     public static SpeedController clawMotorRight = new Spark(clawRightChannel);
     public static SpeedController platformMotor = new Spark(platformChannel);
 
+    //    Initialize pneumatic controllers
     public static Solenoid clawGrabberL = new Solenoid(clawGrabLChannel);
     public static Solenoid clawGrabberR = new Solenoid(clawGrabRChannel);
     public static Solenoid clawRotate = new Solenoid(clawRotateChannel);
     public static Solenoid platformDeploy = new Solenoid(platformDropChannel);
 
-
-
+    //    Initialize sensors
     public static Gyro gyro = new ADXRS450_Gyro();
 
 
