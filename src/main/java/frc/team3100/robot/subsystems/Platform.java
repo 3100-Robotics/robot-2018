@@ -26,5 +26,5 @@ public class Platform extends Subsystem {
         platformLift.set(1);
     }
 
-    public void stop() { platformLift.set(0); }
+    public void lower() { platformLift.set(0); }
 }

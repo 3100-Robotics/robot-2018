@@ -5,18 +5,18 @@ import frc.team3100.robot.Robot;
 
 public class PlatformRampUp extends Command {
     public PlatformRampUp() {
-        super("Shoot");
-        requires(Robot.shooter);
+        super("PlatformRampUp");
+        requires(Robot.platform);
 
     }
 
     public void initialize() {
-        if(Robot.oi.shootState && !Robot.autoVal){
-            Robot.shooter.shoot();
-            Robot.oi.shootState = false;
+        if(Robot.oi.platformRasied){
+            Robot.platform.lift();
+            Robot.oi.platformRasied = true;
         } else {
-            Robot.shooter.stopShooting();
-            Robot.oi.shootState = true;
+            Robot.platform.lower();
+            Robot.oi.shootState = false;
         }
     }
 
@@ -33,8 +33,6 @@ public class PlatformRampUp extends Command {
     }
 
     public void interrupted() {
-        Robot.shooter.stopShooting();
-        Robot.oi.shootState = true;
 
     }
 }

@@ -21,7 +21,7 @@ public class Robot extends IterativeRobot{
 
     // Define variables used later in the Robot class
     public static boolean autoVal;
-    public String gameData;
+    public static String gameData;
     private static final int IMG_WIDTH = 320;
     private static final int IMG_HEIGHT = 240;
 

@@ -5,19 +5,13 @@ import frc.team3100.robot.Robot;
 
 public class PlatformRelease extends Command {
     public PlatformRelease() {
-        super("Shoot");
-        requires(Robot.shooter);
+        super("PlatformRelease");
+        requires(Robot.platform);
 
     }
 
     public void initialize() {
-        if(Robot.oi.shootState && !Robot.autoVal){
-            Robot.shooter.shoot();
-            Robot.oi.shootState = false;
-        } else {
-            Robot.shooter.stopShooting();
-            Robot.oi.shootState = true;
-        }
+        Robot.platform.deploy();
     }
 
     public void execute() {
@@ -33,8 +27,6 @@ public class PlatformRelease extends Command {
     }
 
     public void interrupted() {
-        Robot.shooter.stopShooting();
-        Robot.oi.shootState = true;
 
     }
 }

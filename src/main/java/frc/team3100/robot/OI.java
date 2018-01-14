@@ -21,6 +21,7 @@ public class OI {
     public boolean shootState = true;
     public boolean clawYState = false;
     public boolean clawXState = true;
+    public boolean platformRasied = false;
     public int elevatorLevel = 0;
     public String elevatorPosition = "pickup";
 

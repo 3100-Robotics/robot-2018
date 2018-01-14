@@ -14,13 +14,15 @@ public class Auto extends Command {
     }
 
     private static MainDrive drive = Robot.drive;
+    private static String gameSetup = Robot.gameData;
 
-    @Override
+
     protected void initialize() {
+
 
     }
 
-    @Override
+
     protected void execute() {
 
     }
@@ -35,7 +37,7 @@ public class Auto extends Command {
         drive.drive(0, 0);
     }
 
-    @Override
+
     protected void end() {
 
     }

@@ -5,18 +5,17 @@ import frc.team3100.robot.Robot;
 
 public class ClawGrab extends Command {
     public ClawGrab() {
-        super("Shoot");
-        requires(Robot.shooter);
-
+        super("ClawGrab");
+        requires(Robot.claw);
     }
 
     public void initialize() {
-        if(Robot.oi.shootState && !Robot.autoVal){
-            Robot.shooter.shoot();
-            Robot.oi.shootState = false;
+        if(Robot.oi.clawXState){
+            Robot.claw.open();
+            Robot.oi.clawXState = false;
         } else {
-            Robot.shooter.stopShooting();
-            Robot.oi.shootState = true;
+            Robot.claw.close();
+            Robot.oi.clawXState = true;
         }
     }
 
@@ -33,9 +32,8 @@ public class ClawGrab extends Command {
     }
 
     public void interrupted() {
-        Robot.shooter.stopShooting();
-        Robot.oi.shootState = true;
+        Robot.claw.open();
+        Robot.oi.clawXState = false;
 
     }
 }
-
