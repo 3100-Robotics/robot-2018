@@ -10,31 +10,12 @@ import frc.team3100.robot.subsystems.MainDrive;
 public class Auto extends CommandGroup {
 
     public Auto() {
+        addSequential(new AutoDriveForwards(59));
+        addSequential(new AutoDriveTurnRight(90));
+        addSequential(new AutoDriveForwards(30));
+        addSequential(new AutoDriveTurnRight(90));
+        addSequential(new AutoDriveForwards(50));
+        addSequential(new AutoDriveTurnRight(90));
         addSequential(new AutoDriveForwards(37));
     }
-
-
-    protected void initialize() {
-
-    }
-
-
-    protected void execute() {
-    }
-
-
-    protected boolean isFinished() {
-        return false;
-    }
-
-
-    protected void interrupted(){
-
-    }
-
-
-    protected void end() {
-
-    }
 }
-

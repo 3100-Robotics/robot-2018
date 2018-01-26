@@ -25,16 +25,16 @@ public class AutoDriveBackwards extends Command {
 
     protected void execute() {
 
-        drive.drive(-.5, 0);
+        drive.drive(.5, 0);
 
     }
 
 
     protected boolean isFinished() {
-        if(Robot.drive.storedValRight <= targetValue) {
-            return false;
-        } else {
+        if(Robot.drive.storedValRight >= targetValue) {
             return true;
+        } else {
+            return false;
         }
     }
 
