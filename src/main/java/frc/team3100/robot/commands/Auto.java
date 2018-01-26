@@ -1,30 +1,25 @@
 package frc.team3100.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team3100.robot.Robot;
 import frc.team3100.robot.subsystems.MainDrive;
 
 
-public class Auto extends Command {
+public class Auto extends CommandGroup {
 
     public Auto() {
-        super("Auto");
-        requires(Robot.drive);
-
+        addSequential(new AutoDriveForwards(37));
     }
-
-    private static MainDrive drive = Robot.drive;
-    private static String gameSetup = Robot.gameData;
 
 
     protected void initialize() {
-
 
     }
 
 
     protected void execute() {
-
     }
 
 
@@ -34,7 +29,7 @@ public class Auto extends Command {
 
 
     protected void interrupted(){
-        drive.drive(0, 0);
+
     }
 
 

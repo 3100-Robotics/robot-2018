@@ -25,9 +25,9 @@ public class RobotMap {
     private static int platformDropChannel = 3;
 
     //     D I O
-    private static int driveLeftEncoderChannel = 0;
-    private static int driveRightEncoderChannel = 1;
-    private static int elevatorLevelChannel = 2;
+    private static int driveLeftCounterChannel = 0;
+    private static int driveRightCounterChannel = 1;
+    private static int elevatorLevelCounterChannel = 2;
 
 
 
@@ -52,6 +52,10 @@ public class RobotMap {
 
     //    Initialize sensors
     public static Gyro gyro = new ADXRS450_Gyro();
+    public static Counter elevatorCounter = new Counter(elevatorChannel);
+    public static Counter leftDriveCounter = new Counter(driveLeftCounterChannel);
+    public static Counter rightDriveCounter = new Counter(driveRightCounterChannel);
+
 
 
 

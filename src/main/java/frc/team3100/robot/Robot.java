@@ -4,13 +4,15 @@ import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.team3100.robot.commands.Auto;
 import frc.team3100.robot.subsystems.*;
 
 
 public class Robot extends IterativeRobot{
-
+    Command AutoCommand;
     // Define subsystems for Commands to access
     public static Claw claw;
     public static Elevator elevator;
@@ -42,6 +44,8 @@ public class Robot extends IterativeRobot{
         // ALWAYS initialize OI last
         oi = new OI();
 
+
+        AutoCommand = new Auto();
         SmartDashboard.putData("MainDrive", drive);
     }
 
@@ -49,22 +53,26 @@ public class Robot extends IterativeRobot{
     public void autonomousInit() {
         // What to run ONCE at the beginning of the autonomous period
         gameData = DriverStation.getInstance().getGameSpecificMessage();
+        AutoCommand.start();
         autoVal = true;
     }
 
     public void autonomousPeriodic() {
         // Running auto code for the first 15 seconds of the match.
         Scheduler.getInstance().run();
+        SmartDashboard.putBoolean("autoVal",autoVal);
     }
 
     public void teleopInit() {
         // Setting autoVal equal to false so the auto code stops running
+        AutoCommand.cancel();
         autoVal = false;
     }
 
     public void teleopPeriodic() {
         // Starts the scheduler for the teleop period to run the commands
         Scheduler.getInstance().run();
+        SmartDashboard.putBoolean("autoVal",autoVal);
     }
 
 

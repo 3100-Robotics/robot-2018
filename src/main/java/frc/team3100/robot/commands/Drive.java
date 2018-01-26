@@ -24,7 +24,7 @@ public class Drive extends Command {
 
     @Override
     protected void execute() {
-        drive.drive(controller.getLeftStickY(), controller.getLeftStickX());
+        drive.drive(controller.getLeftStickY(), controller.getRightStickX());
     }
 
 

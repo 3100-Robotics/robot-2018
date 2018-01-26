@@ -3,6 +3,8 @@ package frc.team3100.robot.subsystems;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.team3100.robot.RobotMap;
+import frc.team3100.robot.commands.ClawDrop;
+import frc.team3100.robot.commands.ClawGrab;
 
 
 public class Claw extends Subsystem {
@@ -30,14 +32,18 @@ public class Claw extends Subsystem {
     }
 
     // Changes the speed of the wheels to intake or output the power cube.
-    public void collect() {
-        clawMotorLeft.set(1);
-        clawMotorRight.set(1);
+    public void collect(double intakeSpeed) {
+        clawMotorLeft.set(-intakeSpeed);
+        clawMotorRight.set(-intakeSpeed);
     }
 
-    public void score() {
-        clawMotorLeft.set(-1);
-        clawMotorRight.set(-1);
+    public void score(double outtakeSpeed) {
+        clawMotorLeft.set(outtakeSpeed);
+        clawMotorRight.set(outtakeSpeed);
+    }
+    public void stop() {
+        clawMotorLeft.set(0);
+        clawMotorRight.set(0);
     }
 
     // To control the rotaton of the claw at the beginning of the match.
