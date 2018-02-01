@@ -6,10 +6,15 @@ import frc.team3100.robot.RobotMap;
 import frc.team3100.robot.XBoxTech;
 import frc.team3100.robot.subsystems.Elevator;
 
-public class ElevatorManual extends Command {
-    public ElevatorManual() {
-        super("ElevatorManual");
+public class ElevatorMotion extends Command {
+
+
+    private static double targetLocation;
+
+    public ElevatorMotion(double location) {
+        super("ElevatorMotion");
         requires(Robot.elevator);
+        location = targetLocation;
 
     }
     private static Elevator elevator = Robot.elevator;
@@ -20,7 +25,11 @@ public class ElevatorManual extends Command {
     }
 
     public void execute() {
-        elevator.manual(controller.getLeftStickX());
+        if(Robot.elevator.elevation > targetLocation) {
+            elevator.move(-1);
+        } else if(Robot.elevator.elevation < targetLocation) {
+            elevator.move(1);
+        }
     }
 
     public boolean isFinished() {

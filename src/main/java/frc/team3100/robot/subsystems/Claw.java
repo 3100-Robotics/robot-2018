@@ -2,9 +2,8 @@ package frc.team3100.robot.subsystems;
 
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc.team3100.robot.Robot;
 import frc.team3100.robot.RobotMap;
-import frc.team3100.robot.commands.ClawDrop;
-import frc.team3100.robot.commands.ClawGrab;
 
 
 public class Claw extends Subsystem {
@@ -12,9 +11,13 @@ public class Claw extends Subsystem {
     // Defining objects from RobotMap that control the claw
     private static SpeedController clawMotorLeft = RobotMap.clawMotorLeft;
     private static SpeedController clawMotorRight = RobotMap.clawMotorRight;
-    private static Solenoid clawGrabberL = RobotMap.clawGrabberL;
-    private static Solenoid clawGrabberR = RobotMap.clawGrabberR;
-    private static Solenoid clawRotate = RobotMap.clawRotate;
+    private static Solenoid clawGrabberOpen = RobotMap.clawGrabberOpen;
+    private static Solenoid clawGrabberClose = RobotMap.clawGrabberClose;
+    private static DigitalInput clawButton = RobotMap.clawButton;
+
+    private double wheelSpeed = .9;
+
+
 
     public void initDefaultCommand() {
 
@@ -22,37 +25,34 @@ public class Claw extends Subsystem {
 
     // Uses pneumatics to open/close the claw. Can be used to grab boxes from different orientations.
     public void close() {
-        clawGrabberL.set(true);
-        clawGrabberR.set(true);
-    }
+        clawGrabberClose.set(true);
+        clawGrabberOpen.set(false);    }
 
     public void open() {
-        clawGrabberL.set(false);
-        clawGrabberR.set(false);
-    }
+        clawGrabberOpen.set(true);
+        clawGrabberClose.set(false);    }
 
     // Changes the speed of the wheels to intake or output the power cube.
-    public void collect(double intakeSpeed) {
-        clawMotorLeft.set(-intakeSpeed);
-        clawMotorRight.set(-intakeSpeed);
+    public void collect() {
+        clawMotorLeft.set(wheelSpeed);
+        clawMotorRight.set(wheelSpeed);
+        Robot.oi.clawCollectState = true;
     }
 
-    public void score(double outtakeSpeed) {
-        clawMotorLeft.set(outtakeSpeed);
-        clawMotorRight.set(outtakeSpeed);
+    public void score() {
+        clawMotorLeft.set(-wheelSpeed);
+        clawMotorRight.set(-wheelSpeed);
+        int time = 0;
+        while(time < 20) {
+            time += 1;
+        }
+        stop();
     }
     public void stop() {
         clawMotorLeft.set(0);
         clawMotorRight.set(0);
+        Robot.oi.clawCollectState = false;
     }
 
-    // To control the rotaton of the claw at the beginning of the match.
-    public void rotUp() {
-        clawRotate.set(false);
-    }
-
-    public void rotDown() {
-        clawRotate.set(true);
-    }
 
 }

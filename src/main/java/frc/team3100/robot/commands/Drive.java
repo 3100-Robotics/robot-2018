@@ -14,7 +14,6 @@ public class Drive extends Command {
         super("Drive");
         requires(Robot.drive);
     }
-    private static MainDrive drive = Robot.drive;
     private static XBoxDrive controller = RobotMap.driveControls;
 
     @Override
@@ -24,7 +23,7 @@ public class Drive extends Command {
 
     @Override
     protected void execute() {
-        drive.drive(controller.getLeftStickY(), controller.getRightStickX());
+        Robot.drive.drive(controller.getLeftStickY(), controller.getRightStickX());
     }
 
 
@@ -34,7 +33,7 @@ public class Drive extends Command {
 
 
     protected void interrupted(){
-        drive.drive(0, 0);
+        Robot.drive.drive(0, 0);
     }
 
     @Override

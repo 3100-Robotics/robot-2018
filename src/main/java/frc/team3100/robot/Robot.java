@@ -47,6 +47,9 @@ public class Robot extends IterativeRobot{
 
         AutoCommand = new Auto();
         SmartDashboard.putData("MainDrive", drive);
+        RobotMap.clawGrabberOpen.set(false);
+        RobotMap.clawGrabberClose.set(true);
+        RobotMap.elevatorCounter.reset();
     }
 
 

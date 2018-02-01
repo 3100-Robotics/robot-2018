@@ -10,12 +10,12 @@ public class ClawGrab extends Command {
     }
 
     public void initialize() {
-        if(Robot.oi.clawXState){
-            Robot.claw.open();
-            Robot.oi.clawXState = false;
-        } else {
+        if(Robot.oi.clawOpenState){
             Robot.claw.close();
-            Robot.oi.clawXState = true;
+            Robot.oi.clawOpenState = false;
+        } else {
+            Robot.claw.open();
+            Robot.oi.clawOpenState = true;
         }
     }
 
@@ -32,8 +32,7 @@ public class ClawGrab extends Command {
     }
 
     public void interrupted() {
-        Robot.claw.open();
-        Robot.oi.clawXState = false;
+
 
     }
 }

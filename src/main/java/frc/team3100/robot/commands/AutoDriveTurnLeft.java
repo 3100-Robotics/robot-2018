@@ -1,18 +1,17 @@
 package frc.team3100.robot.commands;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team3100.robot.Robot;
 import frc.team3100.robot.subsystems.MainDrive;
 
 
-public class AutoDriveTurnRight extends Command {
+public class AutoDriveTurnLeft extends Command {
 
     private int targetValue;
     private int time = 0;
-    public AutoDriveTurnRight(int targetVal) {
-        super("AutoDriveTurnRight");
+    public AutoDriveTurnLeft(int targetVal) {
+        super("AutoDriveTurnLeft");
         requires(Robot.drive);
         targetValue = targetVal;
     }
@@ -27,7 +26,7 @@ public class AutoDriveTurnRight extends Command {
 
     protected void execute() {
         time += 1;
-        drive.drive(0, .8);
+        drive.drive(0, -.8);
         SmartDashboard.putNumber("turnTime", time);
     }
 
