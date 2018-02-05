@@ -11,7 +11,7 @@ public class ClawCollect extends Command {
 
     @Override
     public void initialize() {
-        Robot.claw.collect();
+        if(!Robot.oi.cubeHeld) {Robot.claw.collect();}
     }
 
     @Override

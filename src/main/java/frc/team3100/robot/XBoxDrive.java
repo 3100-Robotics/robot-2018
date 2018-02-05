@@ -18,6 +18,9 @@ public class XBoxDrive extends Joystick {
         public static final int rightBumper = 6;
         public static final int leftBumper = 5;
 
+        public static final int backButton = 7;
+        public static final int startButton = 8;
+
         public static final int rightTrigger = 2;
         public static final int leftTrigger = 3;
 

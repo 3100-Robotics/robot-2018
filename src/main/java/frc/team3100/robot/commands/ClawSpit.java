@@ -10,7 +10,9 @@ public class ClawSpit extends Command {
     }
     @Override
     public void initialize() {
-        Robot.claw.score();
+        if(Robot.oi.cubeHeld){
+            Robot.claw.score();
+        }
     }
     @Override
     public void execute() {

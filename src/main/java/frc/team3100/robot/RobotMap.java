@@ -12,8 +12,8 @@ public class RobotMap {
     private static int techController = 2;
 
     //     P W M
-    private static int driveLeftChannel = 1;
-    private static int driveRightChannel = 0;
+    private static int driveLeftChannel = 0;
+    private static int driveRightChannel = 1;
     private static int elevatorChannel = 2;
     private static int clawLeftChannel = 3;
     private static int clawRightChannel = 4;

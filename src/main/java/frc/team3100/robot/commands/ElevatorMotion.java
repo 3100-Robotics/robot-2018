@@ -8,17 +8,14 @@ import frc.team3100.robot.subsystems.Elevator;
 
 public class ElevatorMotion extends Command {
 
+    private double targetLocation = Robot.oi.elevatorTargetLevel;
 
-    private static double targetLocation;
 
-    public ElevatorMotion(double location) {
+    public ElevatorMotion() {
         super("ElevatorMotion");
         requires(Robot.elevator);
-        location = targetLocation;
 
     }
-    private static Elevator elevator = Robot.elevator;
-    private static XBoxTech controller = RobotMap.techControls;
 
     public void initialize() {
 
@@ -26,9 +23,9 @@ public class ElevatorMotion extends Command {
 
     public void execute() {
         if(Robot.elevator.elevation > targetLocation) {
-            elevator.move(-1);
+            Robot.elevator.move(-1);
         } else if(Robot.elevator.elevation < targetLocation) {
-            elevator.move(1);
+            Robot.elevator.move(1);
         }
     }
 

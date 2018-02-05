@@ -2,8 +2,10 @@ package frc.team3100.robot.subsystems;
 
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team3100.robot.Robot;
 import frc.team3100.robot.RobotMap;
+import frc.team3100.robot.commands.ClawButton;
 
 
 public class Claw extends Subsystem {
@@ -18,9 +20,9 @@ public class Claw extends Subsystem {
     private double wheelSpeed = .9;
 
 
-
-    public void initDefaultCommand() {
-
+    @Override
+    protected void initDefaultCommand() {
+        setDefaultCommand(new ClawButton());
     }
 
     // Uses pneumatics to open/close the claw. Can be used to grab boxes from different orientations.
@@ -52,6 +54,13 @@ public class Claw extends Subsystem {
         clawMotorLeft.set(0);
         clawMotorRight.set(0);
         Robot.oi.clawCollectState = false;
+    }
+    public void buttonCheck() {
+        Robot.oi.cubeHeld = RobotMap.clawButton.get();
+        if(Robot.oi.cubeHeld && Robot.oi.clawCollectState) {
+            stop();
+        }
+        SmartDashboard.putBoolean("cubeHeld",Robot.oi.cubeHeld);
     }
 
 

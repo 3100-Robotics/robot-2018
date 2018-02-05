@@ -31,10 +31,10 @@ public class AutoDriveForwards extends Command {
 
 
     protected boolean isFinished() {
-        if(Robot.drive.storedValRight >= targetValue) {
-            return true;
-        } else {
+        if(Robot.drive.storedValRight <= targetValue) {
             return false;
+        } else {
+            return true;
         }
     }
 

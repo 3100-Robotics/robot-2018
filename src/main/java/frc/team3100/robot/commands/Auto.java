@@ -19,8 +19,9 @@ addSequential(new AutoDriveTurnLeft(DEGREES));
 public class Auto extends CommandGroup {
 
     public Auto() {
-        addSequential(new AutoDriveForwards(6));
-        addSequential(new AutoDriveTurnRight(90));
+        addSequential(new AutoDriveForwards(20));
+        addSequential(new AutoDriveTurnRight(180));
+        addSequential(new AutoDriveForwards(20));
 
     }
 }

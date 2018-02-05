@@ -43,13 +43,16 @@ public class Robot extends IterativeRobot{
 
         // ALWAYS initialize OI last
         oi = new OI();
-
+        RobotMap.leftDriveCounter.setDistancePerPulse(1);
+        RobotMap.rightDriveCounter.setDistancePerPulse(1);
 
         AutoCommand = new Auto();
         SmartDashboard.putData("MainDrive", drive);
         RobotMap.clawGrabberOpen.set(false);
         RobotMap.clawGrabberClose.set(true);
         RobotMap.elevatorCounter.reset();
+        RobotMap.gyro.calibrate();
+
     }
 
 

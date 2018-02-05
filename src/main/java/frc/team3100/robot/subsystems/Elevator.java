@@ -20,7 +20,7 @@ public class Elevator extends Subsystem {
 
 
     public void initDefaultCommand() {
-        setDefaultCommand(new ElevatorMotion(Robot.oi.elevatorTargetLevel));
+        setDefaultCommand(new ElevatorMotion());
     }
 
     // Preset heights the elevator needs to reach during a match. Simplifies robot control.

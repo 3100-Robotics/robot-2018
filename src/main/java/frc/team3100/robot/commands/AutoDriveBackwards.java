@@ -25,7 +25,7 @@ public class AutoDriveBackwards extends Command {
 
     protected void execute() {
 
-        drive.drive(.65, 0);
+        drive.drive(-.65, 0);
 
     }
 
