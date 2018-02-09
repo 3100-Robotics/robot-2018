@@ -29,7 +29,7 @@ public class AutoCubeGrab extends Command {
 
 
     protected void interrupted(){
-
+        Robot.drive.drive(0, 0);
     }
 
 

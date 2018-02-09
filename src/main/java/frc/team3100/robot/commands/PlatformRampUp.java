@@ -11,13 +11,7 @@ public class PlatformRampUp extends Command {
     }
 
     public void initialize() {
-        if(Robot.oi.platformRaised){
-            Robot.platform.lift();
-            Robot.oi.platformRaised = true;
-        } else {
-            Robot.platform.lower();
-            Robot.oi.shootState = false;
-        }
+        Robot.platform.lift();
     }
 
     public void execute() {

@@ -11,7 +11,6 @@ public class ElevatorSet extends Command {
 
     public ElevatorSet(double location) {
         super("ElevatorMotion");
-        requires(Robot.elevator);
         location = targetLocation;
 
     }

@@ -29,9 +29,6 @@ public class AutoElevator extends Command {
         }
     }
 
-
-    private static MainDrive drive = Robot.drive;
-
     protected void initialize() {
 
     }

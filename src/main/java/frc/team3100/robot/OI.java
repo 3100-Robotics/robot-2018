@@ -15,6 +15,8 @@ public class OI {
     private XBoxDrive driveControls = RobotMap.driveControls;
     private XBoxTech techControls = RobotMap.techControls;
 
+
+
     // Define all of the buttons used
     private Button vaultLevel = new JoystickButton(techControls, XBoxTech.xButton);
     private Button pickupLevel = new JoystickButton(techControls,XBoxTech.bButton);
@@ -30,26 +32,13 @@ public class OI {
     private Button rampDeployButton = new JoystickButton(driveControls, XBoxDrive.backButton);
     private Button rampRaiseButton = new JoystickButton(driveControls, XBoxDrive.startButton);
 
-    //private DigitalInput clawButton = RobotMap.clawButton;
-
-
 
 
     // Defining state variables to log the states of different subsystems
-    public boolean shootState = true;
     public boolean clawOpenState = false;
-    public boolean platformRaised = false;
     public boolean clawCollectState = false;
-    public int clawDriveState = 2;
     public double elevatorTargetLevel = 0;
-    public boolean collecting = false;
-    public boolean scoring = false;
-
     public boolean cubeHeld = false;
-    // clawDriveState: 2 = output, 3 = off, 4 = input;
-
-
-
 
     public double getDriveMoveSpeed() {
             return driveControls.getLeftStickY();
@@ -81,5 +70,6 @@ public class OI {
 
         rampDeployButton.whenPressed(new PlatformRelease());
         rampRaiseButton.whenPressed(new PlatformRampUp());
+
     }
 }

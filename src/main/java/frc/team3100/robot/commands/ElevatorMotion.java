@@ -14,7 +14,6 @@ public class ElevatorMotion extends Command {
     public ElevatorMotion() {
         super("ElevatorMotion");
         requires(Robot.elevator);
-
     }
 
     public void initialize() {

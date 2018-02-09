@@ -19,6 +19,7 @@ public class ClawButton extends Command {
     public boolean isFinished() {
         return false;
     }
+
     @Override
     public void end() {
 

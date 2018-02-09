@@ -27,7 +27,7 @@ public class RobotMap {
     //     D I O
     private static int driveLeftCounterChannel = 0;
     private static int driveRightCounterChannel = 1;
-    private static int elevatorLevelCounterChannel = 2;
+    private static int elevatorCounterChannel = 2;
     private static int clawButtonChannel = 3;
 
 
@@ -51,7 +51,7 @@ public class RobotMap {
 
     //    Initialize sensors
     public static Gyro gyro = new ADXRS450_Gyro();
-    public static Counter elevatorCounter = new Counter(elevatorChannel);
+    public static Counter elevatorCounter = new Counter(elevatorCounterChannel);
     public static Counter leftDriveCounter = new Counter(driveLeftCounterChannel);
     public static Counter rightDriveCounter = new Counter(driveRightCounterChannel);
     public static DigitalInput clawButton = new DigitalInput(clawButtonChannel);

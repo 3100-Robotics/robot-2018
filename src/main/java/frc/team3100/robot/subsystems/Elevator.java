@@ -14,9 +14,9 @@ public class Elevator extends Subsystem {
     // Defining objects from RobotMap that control the elevator
     private static SpeedController elevatorMotor = RobotMap.elevatorMotor;
     private static Counter elevationSensor = RobotMap.elevatorCounter;
-    public static int elevation = 0;
-    private static boolean upwards = true;
     private static XBoxTech controller = RobotMap.techControls;
+    public  int elevation = 0;
+    private double motorSpeed = .8;
 
 
     public void initDefaultCommand() {
@@ -26,26 +26,28 @@ public class Elevator extends Subsystem {
     // Preset heights the elevator needs to reach during a match. Simplifies robot control.
 
     public void move(int direction) {
+
         if(controller.getLeftStickY() >= .5) {
             Robot.oi.elevatorTargetLevel += 1;
         } else if(controller.getLeftStickY() <= -.5) {
             Robot.oi.elevatorTargetLevel -= 1;
         }
 
-        if(upwards == true) {
+        if(direction == 1) {
             elevation += elevationSensor.get();
             elevationSensor.reset();
         } else {
             elevation -= elevationSensor.get();
             elevationSensor.reset();
         }
-        elevatorMotor.set(0.5 * (Robot.oi.elevatorTargetLevel - elevation));
+
+        elevatorMotor.set(direction * motorSpeed);
 
     }
 
     public double vaultLevel() {
         return 0;
-    }
+    } //NEED TO CHANGE
 
     public double pickupLevel() {
         return 0;
@@ -53,17 +55,17 @@ public class Elevator extends Subsystem {
 
     public double switchLevel() {
         return 0;
-    }
+    } //NEED TO CHANGE
 
     public double lowLevel() {
         return 0;
-    }
+    } //NEED TO CHANGE
 
     public double midLevel() {
         return 0;
-    }
+    } //NEED TO CHANGE
 
     public double highLevel() {
         return 0;
-    }
+    } //NEED TO CHANGE
 }
