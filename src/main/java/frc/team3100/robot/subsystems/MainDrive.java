@@ -70,12 +70,22 @@ public class MainDrive extends PIDSubsystem {
         SmartDashboard.putNumber("PIDOutput", output);
     }
     public void drive(double move, double rotate) {
+        if(move > .01) {
+            storedValRight -= rightRotSensor.get();
+            storedValLeft -= leftRotSensor.get();
+            rightRotSensor.reset();
+            leftRotSensor.reset();
+        } else if(move < .01) {
+            storedValRight += rightRotSensor.get();
+            storedValLeft += leftRotSensor.get();
+            rightRotSensor.reset();
+            leftRotSensor.reset();
+        }
+
         targetMove = move;
         setSetpoint(setHeading(move, rotate));
         SmartDashboard.putNumber("Rotate", rotate);
         SmartDashboard.putNumber("Move", move);
-
-
         enable();
 
     }

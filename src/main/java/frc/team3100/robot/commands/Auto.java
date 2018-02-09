@@ -21,7 +21,6 @@ public class Auto extends CommandGroup {
     public Auto() {
         addSequential(new AutoDriveForwards(20));
         addSequential(new AutoDriveTurnRight(180));
-        addSequential(new AutoDriveForwards(20));
-
+        addSequential(new AutoCubeCollect());
     }
 }

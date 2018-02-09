@@ -11,7 +11,7 @@ public class AutoDriveBackwards extends Command {
     private int targetValue;
 
     public AutoDriveBackwards(int targetVal) {
-        super("AutoDriveForwards");
+        super("AutoDriveBackwards");
         requires(Robot.drive);
         targetValue = targetVal;
 

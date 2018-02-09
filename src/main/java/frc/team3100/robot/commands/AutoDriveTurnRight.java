@@ -4,13 +4,15 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team3100.robot.Robot;
+import frc.team3100.robot.RobotMap;
 import frc.team3100.robot.subsystems.MainDrive;
 
 
 public class AutoDriveTurnRight extends Command {
 
+
     private int targetValue;
-    private int time = 0;
+    private double gyroTarget;
     public AutoDriveTurnRight(int targetVal) {
         super("AutoDriveTurnRight");
         requires(Robot.drive);
@@ -23,17 +25,17 @@ public class AutoDriveTurnRight extends Command {
     protected void initialize() {
         drive.storedValLeft = 0;
         drive.storedValRight = 0;
+        gyroTarget = RobotMap.gyro.getAngle() + targetValue;
+
     }
 
     protected void execute() {
-        time += 1;
-        drive.drive(0, .8);
-        SmartDashboard.putNumber("turnTime", time);
+        drive.drive(0, .65);
     }
 
 
     protected boolean isFinished() {
-        if(drive.storedValRight <= (targetValue / 15)) {
+        if(RobotMap.gyro.getAngle() < gyroTarget) {
             return false;
         } else {
             return true;
