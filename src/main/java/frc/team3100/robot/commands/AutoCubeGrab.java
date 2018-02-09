@@ -17,14 +17,14 @@ public class AutoCubeGrab extends Command {
     }
 
     protected void execute() {
-
+        Robot.drive.drive(.65,0);
 
 
     }
 
 
     protected boolean isFinished() {
-        return true;
+        return Robot.oi.cubeHeld;
     }
 
 
@@ -34,7 +34,7 @@ public class AutoCubeGrab extends Command {
 
 
     protected void end() {
-
+        Robot.drive.drive(0,0);
     }
 }
 

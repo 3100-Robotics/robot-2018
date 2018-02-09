@@ -6,7 +6,6 @@ import frc.team3100.robot.Robot;
 public class ClawButton extends Command {
     public ClawButton() {
         super("ClawButton");
-        requires(Robot.claw);
     }
     @Override
     public void initialize() {

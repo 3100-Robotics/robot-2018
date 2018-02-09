@@ -10,16 +10,13 @@ public class ClawGrab extends Command {
     }
 
     public void initialize() {
-        if (!Robot.oi.cubeHeld) {
-            if(Robot.oi.clawOpenState){
-                Robot.claw.close();
-                Robot.oi.clawOpenState = false;
-            } else {
-                Robot.claw.open();
-                Robot.oi.clawOpenState = true;
-            }
+        if (Robot.oi.clawOpenState) {
+            Robot.claw.close();
+            Robot.oi.clawOpenState = false;
+        } else {
+            Robot.claw.open();
+            Robot.oi.clawOpenState = true;
         }
-
     }
 
     public void execute() {

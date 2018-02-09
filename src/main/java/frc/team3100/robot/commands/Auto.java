@@ -1,20 +1,25 @@
 package frc.team3100.robot.commands;
-
-import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import frc.team3100.robot.Robot;
-import frc.team3100.robot.subsystems.MainDrive;
-/* COPY AND PASTE THESE
 
+/*
+COPY AND PASTE THESE
+
+TO DRIVE FORWARDS:
 addSequential(new AutoDriveForwards(FEET));
+
+TO DRIVE BACKWARDS:
 addSequential(new AutoDriveBackwards(FEET));
+
+TO TURN RIGHT:
 addSequential(new AutoDriveTurnRight(DEGREES));
+
+TO TURN LEFT:
 addSequential(new AutoDriveTurnLeft(DEGREES));
 
+TO COLLECT A CUBE:
+addSequential(new AutoCubeCollect());
 
- */
+*/
 
 public class Auto extends CommandGroup {
 
@@ -22,5 +27,6 @@ public class Auto extends CommandGroup {
         addSequential(new AutoDriveForwards(20));
         addSequential(new AutoDriveTurnRight(180));
         addSequential(new AutoCubeCollect());
+
     }
 }

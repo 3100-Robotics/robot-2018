@@ -16,7 +16,6 @@ public class OI {
     private XBoxTech techControls = RobotMap.techControls;
 
     // Define all of the buttons used
-    public Button elevatorManual = new JoystickButton(techControls,XBoxTech.leftYAxis);
     private Button vaultLevel = new JoystickButton(techControls, XBoxTech.xButton);
     private Button pickupLevel = new JoystickButton(techControls,XBoxTech.bButton);
     private Trigger highLevel = new POVR();
@@ -24,8 +23,8 @@ public class OI {
     private Trigger lowLevel = new POVL();
     private Trigger midLevel = new POVD();
 
-    private Button clawOutput = new JoystickButton(techControls, XBoxTech.leftBumper);
-    private Button clawInput = new JoystickButton(techControls,XBoxTech.rightBumper);
+    private Button clawOutput = new JoystickButton(driveControls, XBoxDrive.aButton);
+    private Button clawInput = new JoystickButton(driveControls,XBoxDrive.bButton);
     private Button clawOpenClose = new JoystickButton(techControls,XBoxTech.aButton);
 
     private Button rampDeployButton = new JoystickButton(driveControls, XBoxDrive.backButton);
@@ -43,6 +42,9 @@ public class OI {
     public boolean clawCollectState = false;
     public int clawDriveState = 2;
     public double elevatorTargetLevel = 0;
+    public boolean collecting = false;
+    public boolean scoring = false;
+
     public boolean cubeHeld = false;
     // clawDriveState: 2 = output, 3 = off, 4 = input;
 
@@ -75,6 +77,7 @@ public class OI {
 
         clawOpenClose.whenPressed(new ClawGrab());
         clawOutput.whenPressed(new ClawSpit());
+        clawInput.whenPressed(new ClawCollect());
 
         rampDeployButton.whenPressed(new PlatformRelease());
         rampRaiseButton.whenPressed(new PlatformRampUp());

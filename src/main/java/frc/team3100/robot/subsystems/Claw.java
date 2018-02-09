@@ -17,12 +17,12 @@ public class Claw extends Subsystem {
     private static Solenoid clawGrabberClose = RobotMap.clawGrabberClose;
     private static DigitalInput clawButton = RobotMap.clawButton;
 
-    private double wheelSpeed = .9;
+    private double wheelSpeed = .5;
 
 
     @Override
     protected void initDefaultCommand() {
-        setDefaultCommand(new ClawButton());
+
     }
 
     // Uses pneumatics to open/close the claw. Can be used to grab boxes from different orientations.
@@ -38,27 +38,22 @@ public class Claw extends Subsystem {
     public void collect() {
         clawMotorLeft.set(wheelSpeed);
         clawMotorRight.set(wheelSpeed);
-        Robot.oi.clawCollectState = true;
     }
 
     public void score() {
         clawMotorLeft.set(-wheelSpeed);
         clawMotorRight.set(-wheelSpeed);
-        int time = 0;
-        while(time < 20) {
-            time += 1;
-        }
-        stop();
+
     }
     public void stop() {
         clawMotorLeft.set(0);
         clawMotorRight.set(0);
-        Robot.oi.clawCollectState = false;
     }
     public void buttonCheck() {
         Robot.oi.cubeHeld = RobotMap.clawButton.get();
         if(Robot.oi.cubeHeld && Robot.oi.clawCollectState) {
             stop();
+            Robot.oi.clawCollectState = false;
         }
         SmartDashboard.putBoolean("cubeHeld",Robot.oi.cubeHeld);
     }

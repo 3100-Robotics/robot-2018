@@ -10,11 +10,11 @@ public class ClawStop extends Command {
     }
     @Override
     public void initialize() {
-
+        Robot.claw.stop();
     }
+
     @Override
     public void execute() {
-        Robot.claw.stop();
 
     }
 

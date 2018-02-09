@@ -13,6 +13,7 @@ import frc.team3100.robot.subsystems.*;
 
 public class Robot extends IterativeRobot{
     Command AutoCommand;
+    Command ButtonCheck;
     // Define subsystems for Commands to access
     public static Claw claw;
     public static Elevator elevator;
@@ -59,6 +60,7 @@ public class Robot extends IterativeRobot{
     public void autonomousInit() {
         // What to run ONCE at the beginning of the autonomous period
         gameData = DriverStation.getInstance().getGameSpecificMessage();
+        ButtonCheck.start();
         AutoCommand.start();
         autoVal = true;
     }
@@ -71,6 +73,7 @@ public class Robot extends IterativeRobot{
 
     public void teleopInit() {
         // Setting autoVal equal to false so the auto code stops running
+        ButtonCheck.start();
         AutoCommand.cancel();
         autoVal = false;
     }

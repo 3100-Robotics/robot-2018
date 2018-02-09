@@ -27,7 +27,7 @@ public class MainDrive extends PIDSubsystem {
     public int storedValLeft = 0;
     public int storedValRight = 0;
     public static final double ROTATE_COEFF = 1.5;
-    public static final double JOYSTIC_EPSILON = 0.05;
+    public static final double JOYSTIC_EPSILON = 0.1;
     private static double setting = 0.0;
 
 
@@ -37,9 +37,6 @@ public class MainDrive extends PIDSubsystem {
             setting = gyro.getAngle();
         } else if (Math.abs(rotate) >= JOYSTIC_EPSILON) {
             setting += (rotate * ROTATE_COEFF);
-            if (rotate > 0){
-                //setting = 10;
-            } //else setting = -10;
         }
         SmartDashboard.putNumber("PIDSetting",setting);
         return setting;
@@ -53,6 +50,7 @@ public class MainDrive extends PIDSubsystem {
 
         setAbsoluteTolerance(3);
         enable();
+
     }
 
     @Override

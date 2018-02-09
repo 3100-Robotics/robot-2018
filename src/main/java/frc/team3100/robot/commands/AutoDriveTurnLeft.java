@@ -35,7 +35,7 @@ public class AutoDriveTurnLeft extends Command {
 
 
     protected boolean isFinished() {
-        if(RobotMap.gyro.getAngle() > gyroTarget) {
+        if(RobotMap.gyro.getAngle() > gyroTarget + 10) {
             return false;
         } else {
             return true;
