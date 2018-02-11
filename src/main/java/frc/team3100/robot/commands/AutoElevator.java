@@ -3,30 +3,15 @@ package frc.team3100.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team3100.robot.Robot;
-import frc.team3100.robot.subsystems.MainDrive;
 
 
 public class AutoElevator extends Command {
 
-
+    String target;
     public AutoElevator(String level) {
         super("AutoElevator");
         requires(Robot.elevator);
-        if(level == "pickup") {
-            Robot.oi.elevatorTargetLevel = Robot.elevator.pickupLevel();
-        } else if(level == "vault") {
-            Robot.oi.elevatorTargetLevel = Robot.elevator.pickupLevel();
-        } else if(level == "switch") {
-            Robot.oi.elevatorTargetLevel = Robot.elevator.pickupLevel();
-        } else if(level == "low") {
-            Robot.oi.elevatorTargetLevel = Robot.elevator.pickupLevel();
-        } else if(level == "mid") {
-            Robot.oi.elevatorTargetLevel = Robot.elevator.pickupLevel();
-        } else if(level == "high") {
-            Robot.oi.elevatorTargetLevel = Robot.elevator.pickupLevel();
-        } else {
-            SmartDashboard.putString("Error", "Invalid ElevatorPosition");
-        }
+        level = target;
     }
 
     protected void initialize() {
@@ -34,7 +19,21 @@ public class AutoElevator extends Command {
     }
 
     protected void execute() {
-
+        if(target == "pickup") {
+            Robot.oi.elevatorTargetLevel = Robot.elevator.pickupLevel();
+        } else if(target == "vault") {
+            Robot.oi.elevatorTargetLevel = Robot.elevator.pickupLevel();
+        } else if(target == "switch") {
+            Robot.oi.elevatorTargetLevel = Robot.elevator.pickupLevel();
+        } else if(target == "low") {
+            Robot.oi.elevatorTargetLevel = Robot.elevator.pickupLevel();
+        } else if(target == "mid") {
+            Robot.oi.elevatorTargetLevel = Robot.elevator.pickupLevel();
+        } else if(target == "high") {
+            Robot.oi.elevatorTargetLevel = Robot.elevator.pickupLevel();
+        } else {
+            SmartDashboard.putString("Error", "Invalid ElevatorPosition");
+        }
     }
 
 

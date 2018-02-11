@@ -1,5 +1,7 @@
 package frc.team3100.robot.commands;
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.team3100.robot.Robot;
 
 /*
 COPY AND PASTE THESE
@@ -27,7 +29,39 @@ addSequential(new AutoElevator("POSITION"));
 public class AutoRunRight extends CommandGroup {
 
     public AutoRunRight() {
+        if(Robot.gameData.length() > 0) {
+            if (Robot.gameData.charAt(1) == 'R') {
+                //IF SCALE ON CORRECT SIDE
+                addSequential(new AutoDriveForwards(27.943));
+                addSequential(new AutoElevator("high"));
+                addSequential(new AutoCubeScore());
 
+                addSequential(new AutoDriveBackwards(7.729));
+                addSequential(new AutoElevator("pickup"));
+                addSequential(new AutoDriveTurnLeft(90));
+
+                addSequential(new AutoCubeCollect());
+                addSequential(new AutoDriveBackwards(Robot.oi.distanceDriven));
+
+                addSequential(new AutoDriveTurnRight(90));
+                addSequential(new AutoElevator("high"));
+                addSequential(new AutoDriveForwards(7.729));
+                addSequential(new AutoCubeScore());
+
+            } else {
+                //IF SCALE ON OPPOSITE SIDE
+                addSequential(new AutoDriveForwards(20));
+                addSequential(new AutoDriveTurnLeft(82));
+                addSequential(new AutoDriveForwards(15));
+                addSequential(new AutoDriveTurnRight(95));
+                addSequential(new AutoDriveForwards(7.943));
+                addSequential(new AutoCubeScore());
+            }
+
+        } else {
+            SmartDashboard.putString("Error", "No FMS Setup data!");
+            addSequential(new AutoDriveForwards(12));
+        }
 
     }
 }

@@ -1,16 +1,15 @@
 package frc.team3100.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team3100.robot.Robot;
 import frc.team3100.robot.subsystems.MainDrive;
 
 
 public class AutoDriveForwards extends Command {
 
-    private int targetValue;
+    private double targetValue;
 
-    public AutoDriveForwards(int targetVal) {
+    public AutoDriveForwards(double targetVal) {
         super("AutoDriveForwards");
         requires(Robot.drive);
         targetValue = targetVal;

@@ -1,7 +1,6 @@
 package frc.team3100.robot;
 
 import edu.wpi.first.wpilibj.*;
-import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 
 

@@ -1,16 +1,15 @@
 package frc.team3100.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team3100.robot.Robot;
 import frc.team3100.robot.subsystems.MainDrive;
 
 
 public class AutoDriveBackwards extends Command {
 
-    private int targetValue;
+    private double targetValue;
 
-    public AutoDriveBackwards(int targetVal) {
+    public AutoDriveBackwards(double targetVal) {
         super("AutoDriveBackwards");
         requires(Robot.drive);
         targetValue = targetVal;

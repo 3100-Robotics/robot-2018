@@ -4,9 +4,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.team3100.robot.Robot;
 
 
-public class AutoCubeGrab extends Command {
-    public AutoCubeGrab() {
-        super("AutoCubeGrab");
+public class AutoCubeScore extends Command {
+    public AutoCubeScore() {
+        super("AutoCubeScore");
         requires(Robot.claw);
 
     }
@@ -17,7 +17,7 @@ public class AutoCubeGrab extends Command {
     }
 
     protected void execute() {
-        Robot.drive.drive(.65,0);
+        Robot.claw.score();
 
 
     }
@@ -34,7 +34,9 @@ public class AutoCubeGrab extends Command {
 
 
     protected void end() {
-        Robot.drive.drive(0,0);
+        Robot.claw.stop();
+        Robot.claw.open();
+
     }
 }
 

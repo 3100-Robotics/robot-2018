@@ -5,7 +5,6 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team3100.robot.Robot;
 import frc.team3100.robot.RobotMap;
-import frc.team3100.robot.commands.ClawButton;
 
 
 public class Claw extends Subsystem {

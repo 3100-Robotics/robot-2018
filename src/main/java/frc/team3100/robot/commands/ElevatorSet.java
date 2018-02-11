@@ -2,7 +2,6 @@ package frc.team3100.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.team3100.robot.Robot;
-import frc.team3100.robot.subsystems.Elevator;
 
 public class ElevatorSet extends Command {
 

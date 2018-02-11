@@ -1,22 +1,19 @@
 package frc.team3100.robot.subsystems;
 
-import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Counter;
-import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
-import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team3100.robot.RobotMap;
 import frc.team3100.robot.commands.Drive;
 
-import static frc.team3100.robot.Robot.autoVal;
-
 
 public class MainDrive extends PIDSubsystem {
 
+    public int storedValLeft = 0;
+    public int storedValRight = 0;
     private SpeedController leftMotor = RobotMap.leftMotor;
     private SpeedController rightMotor = RobotMap.rightMotor;
     private DifferentialDrive mainDrive;
@@ -24,10 +21,8 @@ public class MainDrive extends PIDSubsystem {
     private Counter leftRotSensor = RobotMap.leftDriveCounter;
     private Counter rightRotSensor = RobotMap.rightDriveCounter;
     private double targetMove = 0;
-    public int storedValLeft = 0;
-    public int storedValRight = 0;
-    public static final double ROTATE_COEFF = 1.5;
-    public static final double JOYSTIC_EPSILON = 0.1;
+    private static final double ROTATE_COEFF = 1.5;
+    private static final double JOYSTIC_EPSILON = 0.1;
     private static double setting = 0.0;
 
 

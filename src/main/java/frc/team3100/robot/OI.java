@@ -1,11 +1,8 @@
 package frc.team3100.robot;
 
-import edu.wpi.first.wpilibj.AnalogInput;
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.Trigger;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team3100.robot.commands.*;
 
 
@@ -39,6 +36,7 @@ public class OI {
     public boolean clawCollectState = false;
     public double elevatorTargetLevel = 0;
     public boolean cubeHeld = false;
+    public int distanceDriven = 0;
 
     public double getDriveMoveSpeed() {
             return driveControls.getLeftStickY();
