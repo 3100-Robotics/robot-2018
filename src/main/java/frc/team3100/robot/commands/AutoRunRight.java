@@ -29,22 +29,23 @@ addSequential(new AutoElevator("POSITION"));
 public class AutoRunRight extends CommandGroup {
 
     public AutoRunRight() {
+
         if(Robot.gameData.length() > 0) {
             if (Robot.gameData.charAt(1) == 'R') {
                 //IF SCALE ON CORRECT SIDE
+                addParallel(new AutoElevator("high"));
                 addSequential(new AutoDriveForwards(27.943));
-                addSequential(new AutoElevator("high"));
                 addSequential(new AutoCubeScore());
 
                 addSequential(new AutoDriveBackwards(7.729));
-                addSequential(new AutoElevator("pickup"));
+                addParallel(new AutoElevator("pickup"));
                 addSequential(new AutoDriveTurnLeft(90));
 
                 addSequential(new AutoCubeCollect());
                 addSequential(new AutoDriveBackwards(Robot.oi.distanceDriven));
 
                 addSequential(new AutoDriveTurnRight(90));
-                addSequential(new AutoElevator("high"));
+                addParallel(new AutoElevator("high"));
                 addSequential(new AutoDriveForwards(7.729));
                 addSequential(new AutoCubeScore());
 

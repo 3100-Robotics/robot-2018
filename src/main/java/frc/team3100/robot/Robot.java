@@ -50,18 +50,18 @@ public class Robot extends IterativeRobot{
         // ALWAYS initialize OI last
         oi = new OI();
 
-        AutoCommandTest = new Auto();
-        AutoCommandCenter = new AutoRunCenter();
-        AutoCommandLeft = new AutoRunLeft();
-        AutoCommandRight = new AutoRunRight();
-        ButtonCheck = new ClawButton();
-
         RobotMap.leftDriveCounter.setDistancePerPulse(1);
         RobotMap.rightDriveCounter.setDistancePerPulse(1);
 
         SmartDashboard.putData("MainDrive", drive);
-        RobotMap.clawGrabberOpen.set(false);
-        RobotMap.clawGrabberClose.set(true);
+        RobotMap.clawGrabber.set(false);
+        RobotMap.platformDeploy.set(false);
+        RobotMap.UPP2.set(false);
+        RobotMap.UPP3.set(true);
+        RobotMap.UPP4.set(false);
+        RobotMap.UPP5.set(true);
+        RobotMap.UPP6.set(false);
+        RobotMap.UPP7.set(true);
         RobotMap.elevatorCounter.reset();
         RobotMap.gyro.calibrate();
 
@@ -79,15 +79,15 @@ public class Robot extends IterativeRobot{
         SmartDashboard.putData("PlatformRelease",new PlatformRelease());
         SmartDashboard.putData("PlatformRampUp",new PlatformRampUp());
 
-
-
     }
 
 
     public void autonomousInit() {
         // What to run ONCE at the beginning of the autonomous period
         gameData = DriverStation.getInstance().getGameSpecificMessage();
-        ButtonCheck.start();
+        AutoCommandCenter = new AutoRunCenter();
+        AutoCommandLeft = new AutoRunLeft();
+        AutoCommandRight = new AutoRunRight();
         AutoChosen = (Command) autoChoice.getSelected();
         AutoChosen.start();
         autoVal = true;
@@ -101,8 +101,9 @@ public class Robot extends IterativeRobot{
 
     public void teleopInit() {
         // Setting autoVal equal to false so the auto code stops running
-        ButtonCheck.start();
-        AutoChosen.cancel();
+        if(autoVal) {
+            AutoChosen.cancel();
+        }
         autoVal = false;
     }
 

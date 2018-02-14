@@ -11,17 +11,21 @@ public class RobotMap {
     private static int techController = 2;
 
     //     P W M
-    private static int driveLeftChannel = 0;
-    private static int driveRightChannel = 1;
-    private static int elevatorChannel = 2;
-    private static int clawLeftChannel = 3;
-    private static int clawRightChannel = 4;
+    private static int driveLeftChannel = 1;
+    private static int driveRightChannel = 2;
+    private static int elevatorChannel = 3;
+    private static int clawChannel = 4;
     private static int platformChannel = 5;
 
     //     P C M
-    private static int clawGrabOpenChannel = 0;
-    private static int clawGrabCloseChannel = 1;
-    private static int platformDropChannel = 3;
+    private static int clawGrabChannel = 0;
+    private static int platformDropChannel = 1;
+    private static int UPP2Channel = 2;
+    private static int UPP3Channel = 3;
+    private static int UPP4Channel = 4;
+    private static int UPP5Channel = 5;
+    private static int UPP6Channel = 6;
+    private static int UPP7Channel = 7;
 
     //     D I O
     private static int driveLeftCounterChannel = 0;
@@ -39,14 +43,20 @@ public class RobotMap {
     public static SpeedController leftMotor = new Spark(driveLeftChannel);
     public static SpeedController rightMotor = new Spark(driveRightChannel);
     public static SpeedController elevatorMotor = new Spark(elevatorChannel);
-    public static SpeedController clawMotorLeft = new Spark(clawLeftChannel);
-    public static SpeedController clawMotorRight = new Spark(clawRightChannel);
+    public static SpeedController clawMotors = new Spark(clawChannel);
     public static SpeedController platformMotor = new Spark(platformChannel);
 
     //    Initialize pneumatic controllers
-    public static Solenoid clawGrabberOpen = new Solenoid(clawGrabOpenChannel);
-    public static Solenoid clawGrabberClose = new Solenoid(clawGrabCloseChannel);
+    public static Solenoid clawGrabber = new Solenoid(clawGrabChannel);
     public static Solenoid platformDeploy = new Solenoid(platformDropChannel);
+    public static Solenoid UPP2 = new Solenoid(UPP2Channel);
+    public static Solenoid UPP3 = new Solenoid(UPP3Channel);
+    public static Solenoid UPP4 = new Solenoid(UPP4Channel);
+    public static Solenoid UPP5 = new Solenoid(UPP5Channel);
+    public static Solenoid UPP6 = new Solenoid(UPP6Channel);
+    public static Solenoid UPP7 = new Solenoid(UPP7Channel);
+
+
 
     //    Initialize sensors
     public static Gyro gyro = new ADXRS450_Gyro();
