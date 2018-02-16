@@ -13,24 +13,25 @@ public class RobotMap {
     //     P W M
     private static int driveLeftChannel = 1;
     private static int driveRightChannel = 2;
-    private static int elevatorChannel = 3;
-    private static int clawChannel = 4;
+    private static int elevatorChannel = 4;
+    private static int clawChannel = 3;
     private static int platformChannel = 5;
+    private static int platformDeployLeftChannel = 6;
+    private static int platformDeployRightChannel = 7;
+
 
     //     P C M
     private static int clawGrabChannel = 0;
-    private static int platformDropChannel = 1;
+    private static int UUP1Channel = 1;
     private static int UPP2Channel = 2;
     private static int UPP3Channel = 3;
     private static int UPP4Channel = 4;
     private static int UPP5Channel = 5;
-    private static int UPP6Channel = 6;
-    private static int UPP7Channel = 7;
 
     //     D I O
-    private static int driveLeftCounterChannel = 0;
+    private static int driveLeftCounterChannel = 2;
     private static int driveRightCounterChannel = 1;
-    private static int elevatorCounterChannel = 2;
+    private static int elevatorCounterChannel = 0;
     private static int clawButtonChannel = 3;
 
 
@@ -48,14 +49,15 @@ public class RobotMap {
 
     //    Initialize pneumatic controllers
     public static Solenoid clawGrabber = new Solenoid(clawGrabChannel);
-    public static Solenoid platformDeploy = new Solenoid(platformDropChannel);
+    public static Solenoid UPP1 = new Solenoid(UUP1Channel);
     public static Solenoid UPP2 = new Solenoid(UPP2Channel);
     public static Solenoid UPP3 = new Solenoid(UPP3Channel);
     public static Solenoid UPP4 = new Solenoid(UPP4Channel);
     public static Solenoid UPP5 = new Solenoid(UPP5Channel);
-    public static Solenoid UPP6 = new Solenoid(UPP6Channel);
-    public static Solenoid UPP7 = new Solenoid(UPP7Channel);
 
+    //    Initialize servos
+    public static Servo platformDeployLeft = new Servo(RobotMap.platformDeployLeftChannel);
+    public static Servo platformDeployRight = new Servo(RobotMap.platformDeployRightChannel);
 
 
     //    Initialize sensors

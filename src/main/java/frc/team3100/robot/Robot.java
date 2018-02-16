@@ -19,6 +19,7 @@ public class Robot extends IterativeRobot{
     private Command AutoCommandTest;
     private Command ButtonCheck;
     private Command AutoChosen;
+    private Command ElevatorMotion;
     private SendableChooser autoChoice;
     // Define subsystems for Commands to access
     public static Claw claw;
@@ -46,24 +47,26 @@ public class Robot extends IterativeRobot{
         elevator = new Elevator();
         platform = new Platform();
         drive = new MainDrive();
+        ButtonCheck = new ClawButton();
+
 
         // ALWAYS initialize OI last
         oi = new OI();
+
+        //Unless you need something from it...
+        ElevatorMotion = new ElevatorMotion();
 
         RobotMap.leftDriveCounter.setDistancePerPulse(1);
         RobotMap.rightDriveCounter.setDistancePerPulse(1);
 
         SmartDashboard.putData("MainDrive", drive);
         RobotMap.clawGrabber.set(false);
-        RobotMap.platformDeploy.set(false);
-        RobotMap.UPP2.set(false);
-        RobotMap.UPP3.set(true);
-        RobotMap.UPP4.set(false);
-        RobotMap.UPP5.set(true);
-        RobotMap.UPP6.set(false);
-        RobotMap.UPP7.set(true);
+        RobotMap.UPP1.set(true);
+        RobotMap.UPP2.set(true);
+        RobotMap.UPP4.set(true);
         RobotMap.elevatorCounter.reset();
         RobotMap.gyro.calibrate();
+
 
         autoChoice = new SendableChooser();
         autoChoice.addDefault("Center", AutoCommandCenter);
@@ -71,18 +74,12 @@ public class Robot extends IterativeRobot{
         autoChoice.addObject("Right", AutoCommandRight);
         autoChoice.addObject("Test",AutoCommandTest);
 
-        //TESTING
-        SmartDashboard.putData("ClawCollect",new ClawCollect());
-        SmartDashboard.putData("ClawGrab",new ClawGrab());
-        SmartDashboard.putData("ClawSpit",new ClawSpit());
-        SmartDashboard.putData("ClawStop",new ClawStop());
-        SmartDashboard.putData("PlatformRelease",new PlatformRelease());
-        SmartDashboard.putData("PlatformRampUp",new PlatformRampUp());
+
 
     }
 
-
     public void autonomousInit() {
+        RobotMap.gyro.reset();
         // What to run ONCE at the beginning of the autonomous period
         gameData = DriverStation.getInstance().getGameSpecificMessage();
         AutoCommandCenter = new AutoRunCenter();
@@ -101,21 +98,30 @@ public class Robot extends IterativeRobot{
 
     public void teleopInit() {
         // Setting autoVal equal to false so the auto code stops running
+        RobotMap.gyro.reset();
         if(autoVal) {
             AutoChosen.cancel();
         }
+        ButtonCheck.start();
+        ElevatorMotion.start();
         autoVal = false;
+        RobotMap.platformDeployLeft.set(.3);
+        RobotMap.platformDeployRight.set(.4);
+
+
     }
 
     public void teleopPeriodic() {
         // Starts the scheduler for the teleop period to run the commands
         Scheduler.getInstance().run();
         SmartDashboard.putBoolean("autoVal",autoVal);
+        SmartDashboard.putBoolean("clawMotorState",Robot.oi.clawCollectState);
+        SmartDashboard.putBoolean("clawOpenState",Robot.oi.clawOpenState);
+        SmartDashboard.putBoolean("cubeHeld",Robot.oi.cubeHeld);
+        SmartDashboard.putNumber("ElevatorCounter",Robot.elevator.elevation);
+        SmartDashboard.putNumber("ElevatorTarget",Robot.oi.elevatorTargetLevel);
+
     }
-
-
-
-    // Test shouldn't ever run during a match; it is only used to set variables and debug the program
 
      public void testInit() {
         // Setting autoVal equal to false so the auto code doesn't run.
@@ -126,8 +132,6 @@ public class Robot extends IterativeRobot{
         // Starts the scheduler to test different commands.
         Scheduler.getInstance().run();
     }
-
-
 
 }
 

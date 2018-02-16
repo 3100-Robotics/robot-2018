@@ -3,6 +3,7 @@ package frc.team3100.robot.subsystems;
 import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team3100.robot.Robot;
 import frc.team3100.robot.RobotMap;
 import frc.team3100.robot.XBoxTech;
@@ -16,6 +17,7 @@ public class Elevator extends Subsystem {
     private static Counter elevationSensor = RobotMap.elevatorCounter;
     private static XBoxTech controller = RobotMap.techControls;
     public  int elevation = 0;
+    private int error = 0;
     private double motorSpeed = .8;
 
 
@@ -25,20 +27,24 @@ public class Elevator extends Subsystem {
 
     // Preset heights the elevator needs to reach during a match. Simplifies robot control.
 
-    public void move(int direction) {
+    public void move(double direction) {
 
-        if(controller.getLeftStickY() >= .5) {
+        if(controller.getLeftStickY() <= -.5) {
             Robot.oi.elevatorTargetLevel += 1;
-        } else if(controller.getLeftStickY() <= -.5) {
+        } else if(controller.getLeftStickY() >= .5) {
             Robot.oi.elevatorTargetLevel -= 1;
         }
-
-        if(direction == 1) {
+        SmartDashboard.putNumber("direction",direction);
+        if(direction > 0) {
             elevation += elevationSensor.get();
             elevationSensor.reset();
-        } else {
+        } else if (direction < 0) {
             elevation -= elevationSensor.get();
             elevationSensor.reset();
+        } else {
+            error += elevationSensor.get();
+            elevationSensor.reset();
+            SmartDashboard.putNumber("ElevatorError", error);
         }
 
         elevatorMotor.set(direction * motorSpeed);

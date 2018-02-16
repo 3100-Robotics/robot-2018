@@ -3,6 +3,7 @@ package frc.team3100.robot.subsystems;
 import edu.wpi.first.wpilibj.Counter;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
+import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -10,8 +11,9 @@ import frc.team3100.robot.RobotMap;
 import frc.team3100.robot.commands.Drive;
 
 
-public class MainDrive extends PIDSubsystem {
 
+public class MainDrive extends Subsystem {
+    /*
     public int storedValLeft = 0;
     public int storedValRight = 0;
     private SpeedController leftMotor = RobotMap.leftMotor;
@@ -82,9 +84,39 @@ public class MainDrive extends PIDSubsystem {
         enable();
 
     }
+    */
 
+    public int storedValLeft = 0;
+    public int storedValRight = 0;
+    private SpeedController leftMotor = RobotMap.leftMotor;
+    private SpeedController rightMotor = RobotMap.rightMotor;
+    private DifferentialDrive mainDrive = new DifferentialDrive(leftMotor,rightMotor);
+    private Counter leftRotSensor = RobotMap.leftDriveCounter;
+    private Counter rightRotSensor = RobotMap.rightDriveCounter;
+    private double targetMove = 0;
+
+    @Override
+    protected void initDefaultCommand() {
+        setDefaultCommand(new Drive());
+    }
+
+
+    public void drive(double move, double rotate) {
+
+        if(move > .01) {
+            storedValRight -= rightRotSensor.get();
+            storedValLeft -= leftRotSensor.get();
+            rightRotSensor.reset();
+            leftRotSensor.reset();
+        } else if(move < .01) {
+            storedValRight += rightRotSensor.get();
+            storedValLeft += leftRotSensor.get();
+            rightRotSensor.reset();
+            leftRotSensor.reset();
+        }
+
+        mainDrive.arcadeDrive(move,rotate);
+        SmartDashboard.putNumber("Rotate", rotate);
+        SmartDashboard.putNumber("Move", move);
+    }
 }
-
-
-
-

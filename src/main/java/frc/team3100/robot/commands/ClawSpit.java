@@ -10,17 +10,25 @@ public class ClawSpit extends Command {
     }
     @Override
     public void initialize() {
-        if(Robot.oi.cubeHeld) {
+        if (Robot.oi.clawScoreState) {
+            Robot.claw.stop();
+            Robot.oi.clawScoreState = false;
+            Robot.oi.clawCollectState = false;
+        } else {
             Robot.claw.score();
+            Robot.oi.clawCollectState = false;
+            Robot.oi.clawScoreState = true;
         }
-
     }
+
+
+
     @Override
     public void execute() {
     }
 
     public boolean isFinished() {
-        return false;
+        return true;
     }
     @Override
     public void end() {

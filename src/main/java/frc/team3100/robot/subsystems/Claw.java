@@ -12,9 +12,10 @@ public class Claw extends Subsystem {
     // Defining objects from RobotMap that control the claw
     private static SpeedController clawMotors = RobotMap.clawMotors;
     private static Solenoid clawGrabber = RobotMap.clawGrabber;
+    private static Solenoid clawClose = RobotMap.UPP1;
     private static DigitalInput clawButton = RobotMap.clawButton;
 
-    private double wheelSpeed = .5;
+    private double wheelSpeed = .6;
 
 
     @Override
@@ -23,31 +24,33 @@ public class Claw extends Subsystem {
     }
 
     // Uses pneumatics to open/close the claw. Can be used to grab boxes from different orientations.
-    public void close() {
-        clawGrabber.set(true);    }
-
     public void open() {
-        clawGrabber.set(false);    }
+        clawGrabber.set(true);
+        clawClose.set(false);
+    }
+
+    public void close() {
+        clawGrabber.set(false);
+        clawClose.set(true);
+    }
 
     // Changes the speed of the wheels to intake or output the power cube.
     public void collect() {
         clawMotors.set(wheelSpeed);
+        SmartDashboard.putBoolean("ClawTest2",true);
     }
 
     public void score() {
-        clawMotors.set(-wheelSpeed);
+        clawMotors.set(-wheelSpeed - .3);
 
     }
     public void stop() {
         clawMotors.set(0);
+        SmartDashboard.putBoolean("ClawTest2",false);
     }
+
     public void buttonCheck() {
-        Robot.oi.cubeHeld = RobotMap.clawButton.get();
-        if(Robot.oi.cubeHeld && Robot.oi.clawCollectState) {
-            stop();
-            Robot.oi.clawCollectState = false;
-        }
-        SmartDashboard.putBoolean("cubeHeld",Robot.oi.cubeHeld);
+
     }
 
 
