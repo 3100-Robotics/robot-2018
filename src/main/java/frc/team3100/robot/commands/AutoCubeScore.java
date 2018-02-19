@@ -5,6 +5,7 @@ import frc.team3100.robot.Robot;
 
 
 public class AutoCubeScore extends Command {
+    private int time = 0;
     public AutoCubeScore() {
         super("AutoCubeScore");
         requires(Robot.claw);
@@ -18,24 +19,29 @@ public class AutoCubeScore extends Command {
 
     protected void execute() {
         Robot.claw.score();
+        time += 1;
 
 
     }
 
 
     protected boolean isFinished() {
-        return Robot.oi.cubeHeld;
+        if(time > 20) {
+            return true;
+
+        } else {
+            return false;
+        }
     }
 
 
     protected void interrupted(){
-        Robot.drive.drive(0, 0);
+
     }
 
 
     protected void end() {
         Robot.claw.stop();
-        Robot.claw.open();
 
     }
 }

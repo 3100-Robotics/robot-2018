@@ -33,6 +33,8 @@ public class AutoRunLeft extends CommandGroup {
 
     public AutoRunLeft() {
 
+        addSequential(new AutoDriveForwards(60));
+        /*
         if(Robot.gameData.length() > 0) {
             if (Robot.gameData.charAt(1) == 'L') {
                 //IF SCALE ON CORRECT SIDE
@@ -66,6 +68,6 @@ public class AutoRunLeft extends CommandGroup {
             SmartDashboard.putString("Error", "No FMS Setup data!");
             addSequential(new AutoDriveForwards(12));
         }
-
+        */
     }
 }

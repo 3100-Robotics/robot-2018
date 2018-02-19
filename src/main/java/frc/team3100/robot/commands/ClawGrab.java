@@ -28,7 +28,6 @@ public class ClawGrab extends Command {
     }
 
     public void end() {
-
     }
 
     public void interrupted() {

@@ -16,7 +16,6 @@ public class Robot extends IterativeRobot{
     private Command AutoCommandLeft;
     private Command AutoCommandRight;
     private Command AutoCommandCenter;
-    private Command AutoCommandTest;
     private Command ButtonCheck;
     private Command AutoChosen;
     private Command ElevatorMotion;
@@ -30,7 +29,7 @@ public class Robot extends IterativeRobot{
 
     // Define variables used later in the Robot class
     public static boolean autoVal;
-    public static String gameData;
+    //public static String gameData;
     private static final int IMG_WIDTH = 320;
     private static final int IMG_HEIGHT = 240;
 
@@ -61,18 +60,17 @@ public class Robot extends IterativeRobot{
 
         SmartDashboard.putData("MainDrive", drive);
         RobotMap.clawGrabber.set(false);
-        RobotMap.UPP1.set(true);
-        RobotMap.UPP2.set(true);
+        RobotMap.rampLeftRaise.set(false);
         RobotMap.UPP4.set(true);
         RobotMap.elevatorCounter.reset();
         RobotMap.gyro.calibrate();
 
 
-        autoChoice = new SendableChooser();
-        autoChoice.addDefault("Center", AutoCommandCenter);
-        autoChoice.addObject("Left", AutoCommandLeft);
-        autoChoice.addObject("Right", AutoCommandRight);
-        autoChoice.addObject("Test",AutoCommandTest);
+        ///autoChoice = new SendableChooser();
+        //autoChoice.addDefault("Left", AutoCommandCenter);
+        //autoChoice.addObject("Center", AutoCommandLeft);
+        //autoChoice.addObject("Right", AutoCommandRight);
+        //SmartDashboard.putData("autoChooser",autoChoice);
 
 
 
@@ -81,12 +79,11 @@ public class Robot extends IterativeRobot{
     public void autonomousInit() {
         RobotMap.gyro.reset();
         // What to run ONCE at the beginning of the autonomous period
-        gameData = DriverStation.getInstance().getGameSpecificMessage();
+        //gameData = DriverStation.getInstance().getGameSpecificMessage();
+
         AutoCommandCenter = new AutoRunCenter();
-        AutoCommandLeft = new AutoRunLeft();
-        AutoCommandRight = new AutoRunRight();
-        AutoChosen = (Command) autoChoice.getSelected();
-        AutoChosen.start();
+        AutoCommandCenter.start();
+
         autoVal = true;
     }
 
@@ -100,7 +97,9 @@ public class Robot extends IterativeRobot{
         // Setting autoVal equal to false so the auto code stops running
         RobotMap.gyro.reset();
         if(autoVal) {
-            AutoChosen.cancel();
+            if (AutoCommandCenter.isRunning()) {
+                AutoCommandCenter.cancel();
+            }
         }
         ButtonCheck.start();
         ElevatorMotion.start();
@@ -115,11 +114,7 @@ public class Robot extends IterativeRobot{
         // Starts the scheduler for the teleop period to run the commands
         Scheduler.getInstance().run();
         SmartDashboard.putBoolean("autoVal",autoVal);
-        SmartDashboard.putBoolean("clawMotorState",Robot.oi.clawCollectState);
-        SmartDashboard.putBoolean("clawOpenState",Robot.oi.clawOpenState);
         SmartDashboard.putBoolean("cubeHeld",Robot.oi.cubeHeld);
-        SmartDashboard.putNumber("ElevatorCounter",Robot.elevator.elevation);
-        SmartDashboard.putNumber("ElevatorTarget",Robot.oi.elevatorTargetLevel);
 
     }
 

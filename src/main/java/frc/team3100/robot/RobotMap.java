@@ -23,7 +23,7 @@ public class RobotMap {
     //     P C M
     private static int clawGrabChannel = 0;
     private static int UUP1Channel = 1;
-    private static int UPP2Channel = 2;
+    private static int rampLeftRaiseChannel = 2;
     private static int UPP3Channel = 3;
     private static int UPP4Channel = 4;
     private static int UPP5Channel = 5;
@@ -33,6 +33,8 @@ public class RobotMap {
     private static int driveRightCounterChannel = 1;
     private static int elevatorCounterChannel = 0;
     private static int clawButtonChannel = 3;
+    private static int elevatorLowerLimitChannel = 4;
+    private static int elevatorUpperLimitChannel = 5;
 
 
 
@@ -50,7 +52,7 @@ public class RobotMap {
     //    Initialize pneumatic controllers
     public static Solenoid clawGrabber = new Solenoid(clawGrabChannel);
     public static Solenoid UPP1 = new Solenoid(UUP1Channel);
-    public static Solenoid UPP2 = new Solenoid(UPP2Channel);
+    public static Solenoid rampLeftRaise = new Solenoid(rampLeftRaiseChannel);
     public static Solenoid UPP3 = new Solenoid(UPP3Channel);
     public static Solenoid UPP4 = new Solenoid(UPP4Channel);
     public static Solenoid UPP5 = new Solenoid(UPP5Channel);
@@ -66,6 +68,8 @@ public class RobotMap {
     public static Counter leftDriveCounter = new Counter(driveLeftCounterChannel);
     public static Counter rightDriveCounter = new Counter(driveRightCounterChannel);
     public static DigitalInput clawButton = new DigitalInput(clawButtonChannel);
+    public static DigitalInput elevatorUpperButton = new DigitalInput(elevatorUpperLimitChannel);
+    public static DigitalInput elevatorLowerButton = new DigitalInput(elevatorLowerLimitChannel);
 
 
 

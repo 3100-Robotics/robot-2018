@@ -3,32 +3,25 @@ package frc.team3100.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team3100.robot.Robot;
+import frc.team3100.robot.RobotMap;
+import frc.team3100.robot.XBoxDrive;
+import frc.team3100.robot.XBoxTech;
 
 public class ElevatorMotion extends Command {
 
-    private double targetLocation = Robot.oi.elevatorTargetLevel;
 
     public ElevatorMotion() {
         super("ElevatorMotion");
         requires(Robot.elevator);
     }
+    private static XBoxTech controller = RobotMap.techControls;
 
     public void initialize() {
 
     }
 
     public void execute() {
-        targetLocation = Robot.oi.elevatorTargetLevel;
-
-        if(Robot.elevator.elevation > targetLocation) {
-            Robot.elevator.move(-1);
-        } else if(Robot.elevator.elevation < targetLocation) {
-            Robot.elevator.move(1);
-        } else {
-            Robot.elevator.move(0);
-        }
-        SmartDashboard.putNumber("target",targetLocation);
-        SmartDashboard.putNumber("elevatorLevel",Robot.elevator.elevation);
+        Robot.elevator.move(-controller.getLeftStickY());
     }
 
     public boolean isFinished() {

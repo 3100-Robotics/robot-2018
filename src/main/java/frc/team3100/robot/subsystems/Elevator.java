@@ -16,62 +16,25 @@ public class Elevator extends Subsystem {
     private static SpeedController elevatorMotor = RobotMap.elevatorMotor;
     private static Counter elevationSensor = RobotMap.elevatorCounter;
     private static XBoxTech controller = RobotMap.techControls;
-    public  int elevation = 0;
-    private int error = 0;
-    private double motorSpeed = .8;
 
 
     public void initDefaultCommand() {
         setDefaultCommand(new ElevatorMotion());
     }
 
-    // Preset heights the elevator needs to reach during a match. Simplifies robot control.
-
     public void move(double direction) {
-
-        if(controller.getLeftStickY() <= -.5) {
-            Robot.oi.elevatorTargetLevel += 1;
-        } else if(controller.getLeftStickY() >= .5) {
-            Robot.oi.elevatorTargetLevel -= 1;
-        }
-        SmartDashboard.putNumber("direction",direction);
-        if(direction > 0) {
-            elevation += elevationSensor.get();
-            elevationSensor.reset();
-        } else if (direction < 0) {
-            elevation -= elevationSensor.get();
-            elevationSensor.reset();
+        if(!RobotMap.elevatorLowerButton.get() && direction <= 0){
+            elevatorMotor.set(0);
+            SmartDashboard.putNumber("elevatorValues",0);
         } else {
-            error += elevationSensor.get();
-            elevationSensor.reset();
-            SmartDashboard.putNumber("ElevatorError", error);
+            if(direction > 0) {
+                direction -= .1;
+            } else if(direction < 0) {
+                direction += .1;
+            }
+            elevatorMotor.set(direction);
+            SmartDashboard.putNumber("elevatorValues",direction);
         }
 
-        elevatorMotor.set(direction * motorSpeed);
-
     }
-
-    public double vaultLevel() {
-        return 0;
-    } //NEED TO CHANGE
-
-    public double pickupLevel() {
-        return 0;
-    }
-
-    public double switchLevel() {
-        return 0;
-    } //NEED TO CHANGE
-
-    public double lowLevel() {
-        return 0;
-    } //NEED TO CHANGE
-
-    public double midLevel() {
-        return 0;
-    } //NEED TO CHANGE
-
-    public double highLevel() {
-        return 0;
-    } //NEED TO CHANGE
 }

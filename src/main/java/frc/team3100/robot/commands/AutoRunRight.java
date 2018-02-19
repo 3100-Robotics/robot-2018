@@ -29,7 +29,11 @@ addSequential(new AutoElevator("POSITION"));
 public class AutoRunRight extends CommandGroup {
 
     public AutoRunRight() {
+        addSequential(new AutoDriveForwards(60));
 
+
+
+        /*
         if(Robot.gameData.length() > 0) {
             if (Robot.gameData.charAt(1) == 'R') {
                 //IF SCALE ON CORRECT SIDE
@@ -63,6 +67,7 @@ public class AutoRunRight extends CommandGroup {
             SmartDashboard.putString("Error", "No FMS Setup data!");
             addSequential(new AutoDriveForwards(12));
         }
+        */
 
     }
 }

@@ -108,11 +108,13 @@ public class MainDrive extends Subsystem {
             storedValLeft -= leftRotSensor.get();
             rightRotSensor.reset();
             leftRotSensor.reset();
+            move -= .1;
         } else if(move < .01) {
             storedValRight += rightRotSensor.get();
             storedValLeft += leftRotSensor.get();
             rightRotSensor.reset();
             leftRotSensor.reset();
+            move += .1;
         }
 
         mainDrive.arcadeDrive(move,rotate);

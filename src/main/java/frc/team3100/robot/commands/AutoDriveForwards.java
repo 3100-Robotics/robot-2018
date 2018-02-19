@@ -8,7 +8,7 @@ import frc.team3100.robot.subsystems.MainDrive;
 public class AutoDriveForwards extends Command {
 
     private double targetValue;
-
+    private int time = 0;
     public AutoDriveForwards(double targetVal) {
         super("AutoDriveForwards");
         requires(Robot.drive);
@@ -24,16 +24,17 @@ public class AutoDriveForwards extends Command {
 
     protected void execute() {
 
-        drive.drive(.65, 0);
+        drive.drive(-.65, 0);
+        time += 1;
 
     }
 
 
     protected boolean isFinished() {
-        if(Robot.drive.storedValRight <= targetValue) {
-            return false;
-        } else {
+        if(Robot.drive.storedValRight >= targetValue || time > 400) {
             return true;
+        } else {
+            return false;
         }
     }
 

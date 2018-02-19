@@ -26,6 +26,11 @@ addSequential(new AutoCubeCollect());
 public class AutoRunCenter extends CommandGroup {
 
     public AutoRunCenter() {
+        addSequential(new AutoDriveForwards(30));
+        addSequential(new AutoElevator());
+        addSequential(new AutoCubeScore());
+
+        /*
         if(Robot.gameData.length() > 0) {
             if (Robot.gameData.charAt(0) == 'L') {
                 //IF SWITCH ON LEFT SIDE
@@ -48,7 +53,7 @@ public class AutoRunCenter extends CommandGroup {
             addSequential(new AutoDriveTurnLeft(22));
             addSequential(new AutoDriveForwards(12));
         }
-
+    */
     }
 
 }

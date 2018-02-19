@@ -12,7 +12,7 @@ public class Platform extends Subsystem {
     // Defining objects from RobotMap that control the platform
     private static Servo platformDeployLeft = RobotMap.platformDeployLeft;
     private static Servo platformDeployRight = RobotMap.platformDeployRight;
-    private static SpeedController platformLift = RobotMap.platformMotor;
+    private static Solenoid platformLift = RobotMap.rampLeftRaise;
 
 
 
@@ -26,7 +26,7 @@ public class Platform extends Subsystem {
     }
 
     public void lift() {
-        platformLift.set(1);
+        platformLift.set(true);
     }
 
 }

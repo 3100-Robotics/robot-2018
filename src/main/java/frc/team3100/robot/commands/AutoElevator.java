@@ -6,12 +6,10 @@ import frc.team3100.robot.Robot;
 
 
 public class AutoElevator extends Command {
-
-    String target;
-    public AutoElevator(String level) {
+    private int time = 0;
+    public AutoElevator() {
         super("AutoElevator");
         requires(Robot.elevator);
-        level = target;
     }
 
     protected void initialize() {
@@ -19,26 +17,13 @@ public class AutoElevator extends Command {
     }
 
     protected void execute() {
-        if(target == "pickup") {
-            Robot.oi.elevatorTargetLevel = Robot.elevator.pickupLevel();
-        } else if(target == "vault") {
-            Robot.oi.elevatorTargetLevel = Robot.elevator.pickupLevel();
-        } else if(target == "switch") {
-            Robot.oi.elevatorTargetLevel = Robot.elevator.pickupLevel();
-        } else if(target == "low") {
-            Robot.oi.elevatorTargetLevel = Robot.elevator.pickupLevel();
-        } else if(target == "mid") {
-            Robot.oi.elevatorTargetLevel = Robot.elevator.pickupLevel();
-        } else if(target == "high") {
-            Robot.oi.elevatorTargetLevel = Robot.elevator.pickupLevel();
-        } else {
-            SmartDashboard.putString("Error", "Invalid ElevatorPosition");
-        }
+        Robot.elevator.move(.7);
+        time += 1;
     }
 
 
     protected boolean isFinished() {
-        if(Robot.oi.elevatorTargetLevel == Robot.elevator.elevation) {
+        if(time > 40) {
             return true;
         } else {
             return false;
