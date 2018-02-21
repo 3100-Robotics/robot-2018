@@ -29,45 +29,33 @@ addSequential(new AutoElevator("POSITION"));
 public class AutoRunRight extends CommandGroup {
 
     public AutoRunRight() {
-        addSequential(new AutoDriveForwards(60));
-
-
-
-        /*
         if(Robot.gameData.length() > 0) {
-            if (Robot.gameData.charAt(1) == 'R') {
-                //IF SCALE ON CORRECT SIDE
-                addParallel(new AutoElevator("high"));
-                addSequential(new AutoDriveForwards(27.943));
+            if (Robot.gameData.charAt(0) == 'R') {
+                addParallel(new AutoElevator("switch"));
+                addSequential(new AutoDriveForwards(28));
                 addSequential(new AutoCubeScore());
+                addParallel(new AutoDriveBackwards(10));
 
-                addSequential(new AutoDriveBackwards(7.729));
-                addParallel(new AutoElevator("pickup"));
-                addSequential(new AutoDriveTurnLeft(90));
-
-                addSequential(new AutoCubeCollect());
-                addSequential(new AutoDriveBackwards(Robot.oi.distanceDriven));
-
-                addSequential(new AutoDriveTurnRight(90));
-                addParallel(new AutoElevator("high"));
-                addSequential(new AutoDriveForwards(7.729));
-                addSequential(new AutoCubeScore());
+            } else if(Robot.gameData.charAt(1) == 'R' && Robot.gameData.charAt(0) == 'L'){
+                //IF SCALE ON OPPOSITE SIDE
+                addSequential(new AutoDriveForwards(2));
+                addSequential(new AutoDriveTurnRight(30));
+                addSequential(new AutoDriveForwards(28));
+                addSequential(new AutoDriveTurnLeft(26));
+                addSequential(new AutoDriveForwards(43));
+                addParallel(new AutoDriveBackwards(6));
 
             } else {
-                //IF SCALE ON OPPOSITE SIDE
-                addSequential(new AutoDriveForwards(20));
-                addSequential(new AutoDriveTurnLeft(82));
-                addSequential(new AutoDriveForwards(15));
-                addSequential(new AutoDriveTurnRight(95));
-                addSequential(new AutoDriveForwards(7.943));
-                addSequential(new AutoCubeScore());
+                addSequential(new AutoDriveForwards(28));
+                addParallel(new AutoDriveBackwards(6));
             }
 
         } else {
             SmartDashboard.putString("Error", "No FMS Setup data!");
-            addSequential(new AutoDriveForwards(12));
+            addSequential(new AutoDriveForwards(28));
+            addParallel(new AutoDriveBackwards(6));
         }
-        */
+
 
     }
 }

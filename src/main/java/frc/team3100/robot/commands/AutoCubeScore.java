@@ -26,7 +26,7 @@ public class AutoCubeScore extends Command {
 
 
     protected boolean isFinished() {
-        if(time > 20) {
+        if(time > 50) {
             return true;
 
         } else {

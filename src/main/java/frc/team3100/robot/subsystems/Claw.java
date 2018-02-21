@@ -36,12 +36,18 @@ public class Claw extends Subsystem {
 
     // Changes the speed of the wheels to intake or output the power cube.
     public void collect() {
-        clawMotors.set(wheelSpeed);
+        clawMotors.set(-wheelSpeed);
         SmartDashboard.putBoolean("ClawTest2",true);
     }
 
     public void score() {
-        clawMotors.set(-wheelSpeed - .3);
+        if(Robot.autoVal) {
+            clawMotors.set(wheelSpeed);
+
+        } else {
+            clawMotors.set(wheelSpeed + .3);
+
+        }
 
     }
     public void stop() {

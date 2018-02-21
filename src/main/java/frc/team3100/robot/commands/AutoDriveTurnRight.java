@@ -28,7 +28,7 @@ public class AutoDriveTurnRight extends Command {
     }
 
     protected void execute() {
-        drive.drive(0, .65);
+        drive.drive(.4, .65);
     }
 
 

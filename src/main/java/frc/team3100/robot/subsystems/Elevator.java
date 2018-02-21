@@ -27,14 +27,11 @@ public class Elevator extends Subsystem {
             elevatorMotor.set(0);
             SmartDashboard.putNumber("elevatorValues",0);
         } else {
-            if(direction > 0) {
-                direction -= .1;
-            } else if(direction < 0) {
-                direction += .1;
+            if (direction < -.2) {
+                 direction = -.2;
             }
             elevatorMotor.set(direction);
-            SmartDashboard.putNumber("elevatorValues",direction);
         }
-
+        SmartDashboard.putNumber("elevatorValues",direction);
     }
 }

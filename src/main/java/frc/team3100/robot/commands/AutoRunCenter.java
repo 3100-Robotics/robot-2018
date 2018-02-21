@@ -26,9 +26,24 @@ addSequential(new AutoCubeCollect());
 public class AutoRunCenter extends CommandGroup {
 
     public AutoRunCenter() {
-        addSequential(new AutoDriveForwards(30));
-        addSequential(new AutoElevator());
-        addSequential(new AutoCubeScore());
+        if(Robot.gameData.length() > 0) {
+            if(Robot.gameData.charAt(0) == 'R') {
+                addSequential(new AutoDriveForwards(6));
+                addParallel(new AutoElevator("switch"));
+                addSequential(new AutoDriveTurnRight(30));
+                addSequential(new AutoDriveForwards(30));
+                addSequential(new AutoDriveTurnLeft(10));
+                addSequential(new AutoCubeScore());
+            } else {
+                addSequential(new AutoDriveForwards(6));
+                addParallel(new AutoElevator("switch"));
+                addSequential(new AutoDriveTurnLeft(30));
+                addSequential(new AutoDriveForwards(30));
+                addSequential(new AutoDriveTurnRight(10));
+                addSequential(new AutoCubeScore());
+            }
+        }
+
 
         /*
         if(Robot.gameData.length() > 0) {

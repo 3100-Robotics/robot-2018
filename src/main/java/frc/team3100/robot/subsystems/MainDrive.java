@@ -99,6 +99,11 @@ public class MainDrive extends Subsystem {
     protected void initDefaultCommand() {
         setDefaultCommand(new Drive());
     }
+    double changeTurn;
+    double changeDrive;
+    double limit = 0.1;
+    double limitedJoystickDrive;
+    double limitedJoystickTurn;
 
 
     public void drive(double move, double rotate) {
@@ -116,9 +121,26 @@ public class MainDrive extends Subsystem {
             leftRotSensor.reset();
             move += .1;
         }
+        changeTurn = rotate - limitedJoystickTurn;
+        if(changeTurn > limit) {
+            changeTurn = limit;
+        } else if (changeTurn < -limit) {
+            changeTurn = -limit;
+        }
+        limitedJoystickTurn += changeTurn;
 
-        mainDrive.arcadeDrive(move,rotate);
+        changeDrive = move - limitedJoystickDrive;
+        if(changeDrive > limit) {
+            changeDrive = limit;
+        } else if (changeDrive < -limit) {
+            changeDrive = -limit;
+        }
+        limitedJoystickDrive += changeDrive;
+
+        mainDrive.arcadeDrive(limitedJoystickDrive,limitedJoystickTurn);
         SmartDashboard.putNumber("Rotate", rotate);
         SmartDashboard.putNumber("Move", move);
+        SmartDashboard.putNumber("limitedRotate", limitedJoystickTurn);
+        SmartDashboard.putNumber("limitedMove",limitedJoystickDrive);
     }
 }

@@ -18,7 +18,7 @@ public class OI {
     private Button clawOpenClose = new JoystickButton(techControls,XBoxTech.aButton);
 
     private Button rampDeployButton = new JoystickButton(driveControls, XBoxDrive.backButton);
-    private Button rampRaiseButton = new JoystickButton(driveControls, XBoxDrive.startButton);
+    private Button rampRaiseButton = new JoystickButton(driveControls, XBoxDrive.yButton);
 
 
 
@@ -26,6 +26,10 @@ public class OI {
     public boolean clawOpenState = false;
     public boolean clawCollectState = false;
     public boolean cubeHeld = false;
+    public boolean test = true;
+    public boolean test2 = true;
+    public boolean platState = false;
+
     public int distanceDriven = 0;
 
     public double getDriveMoveSpeed() {

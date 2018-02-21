@@ -27,6 +27,11 @@ public class Platform extends Subsystem {
 
     public void lift() {
         platformLift.set(true);
+        RobotMap.UPP5.set(false);
+    }
+    public  void retract() {
+        platformLift.set(false);
+        RobotMap.UPP5.set(true);
     }
 
 }

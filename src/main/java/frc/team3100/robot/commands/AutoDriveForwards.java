@@ -24,7 +24,7 @@ public class AutoDriveForwards extends Command {
 
     protected void execute() {
 
-        drive.drive(-.65, 0);
+        drive.drive(-1, 0);
         time += 1;
 
     }

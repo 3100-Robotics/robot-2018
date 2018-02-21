@@ -28,7 +28,7 @@ public class AutoDriveTurnLeft extends Command {
     }
 
     protected void execute() {
-        drive.drive(0, -.65);
+        drive.drive(.4, -.65);
     }
 
 
@@ -47,7 +47,7 @@ public class AutoDriveTurnLeft extends Command {
 
 
     protected void end() {
-
+        drive.drive(0,0);
     }
 }
 

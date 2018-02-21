@@ -13,9 +13,9 @@ import frc.team3100.robot.subsystems.*;
 
 
 public class Robot extends IterativeRobot{
-    private Command AutoCommandLeft;
-    private Command AutoCommandRight;
-    private Command AutoCommandCenter;
+    private Command AutoLeft;
+    private Command AutoRight;
+    private Command AutoCenter;
     private Command ButtonCheck;
     private Command AutoChosen;
     private Command ElevatorMotion;
@@ -29,7 +29,7 @@ public class Robot extends IterativeRobot{
 
     // Define variables used later in the Robot class
     public static boolean autoVal;
-    //public static String gameData;
+    public static String gameData;
     private static final int IMG_WIDTH = 320;
     private static final int IMG_HEIGHT = 240;
 
@@ -40,7 +40,7 @@ public class Robot extends IterativeRobot{
         UsbCamera server = CameraServer.getInstance().startAutomaticCapture("cam0", 0);
         server.setBrightness(20);
         server.setResolution(IMG_WIDTH, IMG_HEIGHT);
-
+        gameData = DriverStation.getInstance().getGameSpecificMessage();
         //Creates instances of all of the subsystems for the commands to access.
         claw = new Claw();
         elevator = new Elevator();
@@ -49,8 +49,13 @@ public class Robot extends IterativeRobot{
         ButtonCheck = new ClawButton();
 
 
+
         // ALWAYS initialize OI last
         oi = new OI();
+
+        AutoCenter = new AutoRunCenter();
+        AutoRight = new AutoRunRight();
+        AutoLeft = new AutoRunLeft();
 
         //Unless you need something from it...
         ElevatorMotion = new ElevatorMotion();
@@ -61,16 +66,20 @@ public class Robot extends IterativeRobot{
         SmartDashboard.putData("MainDrive", drive);
         RobotMap.clawGrabber.set(false);
         RobotMap.rampLeftRaise.set(false);
-        RobotMap.UPP4.set(true);
+        RobotMap.UPP2.set(false);
+        RobotMap.UPP1.set(true);
+        RobotMap.UPP3.set(true);
+        RobotMap.UPP5.set(true);
         RobotMap.elevatorCounter.reset();
         RobotMap.gyro.calibrate();
 
 
-        ///autoChoice = new SendableChooser();
-        //autoChoice.addDefault("Left", AutoCommandCenter);
-        //autoChoice.addObject("Center", AutoCommandLeft);
-        //autoChoice.addObject("Right", AutoCommandRight);
-        //SmartDashboard.putData("autoChooser",autoChoice);
+        autoChoice = new SendableChooser();
+        autoChoice.addObject("Center", AutoCenter);
+        autoChoice.addDefault("Left", AutoLeft);
+        autoChoice.addObject("Right", AutoRight);
+        SmartDashboard.putData(autoChoice);
+        SmartDashboard.putString("welp","okay");
 
 
 
@@ -79,11 +88,9 @@ public class Robot extends IterativeRobot{
     public void autonomousInit() {
         RobotMap.gyro.reset();
         // What to run ONCE at the beginning of the autonomous period
-        //gameData = DriverStation.getInstance().getGameSpecificMessage();
-
-        AutoCommandCenter = new AutoRunCenter();
-        AutoCommandCenter.start();
-
+        gameData = DriverStation.getInstance().getGameSpecificMessage();
+        AutoChosen = (Command) autoChoice.getSelected();
+        AutoChosen.start();
         autoVal = true;
     }
 
@@ -97,8 +104,8 @@ public class Robot extends IterativeRobot{
         // Setting autoVal equal to false so the auto code stops running
         RobotMap.gyro.reset();
         if(autoVal) {
-            if (AutoCommandCenter.isRunning()) {
-                AutoCommandCenter.cancel();
+            if(AutoChosen.isRunning()) {
+                AutoChosen.cancel();
             }
         }
         ButtonCheck.start();
@@ -115,6 +122,10 @@ public class Robot extends IterativeRobot{
         Scheduler.getInstance().run();
         SmartDashboard.putBoolean("autoVal",autoVal);
         SmartDashboard.putBoolean("cubeHeld",Robot.oi.cubeHeld);
+        SmartDashboard.putBoolean("test",Robot.oi.test);
+        SmartDashboard.putBoolean("test2",Robot.oi.test2);
+        SmartDashboard.putData(autoChoice);
+
 
     }
 

@@ -23,9 +23,9 @@ public class RobotMap {
     //     P C M
     private static int clawGrabChannel = 0;
     private static int UUP1Channel = 1;
-    private static int rampLeftRaiseChannel = 2;
+    private static int  UPP2Channel = 2;
     private static int UPP3Channel = 3;
-    private static int UPP4Channel = 4;
+    private static int rampLeftRaiseChannel = 4;
     private static int UPP5Channel = 5;
 
     //     D I O
@@ -54,7 +54,7 @@ public class RobotMap {
     public static Solenoid UPP1 = new Solenoid(UUP1Channel);
     public static Solenoid rampLeftRaise = new Solenoid(rampLeftRaiseChannel);
     public static Solenoid UPP3 = new Solenoid(UPP3Channel);
-    public static Solenoid UPP4 = new Solenoid(UPP4Channel);
+    public static Solenoid UPP2 = new Solenoid(UPP2Channel);
     public static Solenoid UPP5 = new Solenoid(UPP5Channel);
 
     //    Initialize servos
