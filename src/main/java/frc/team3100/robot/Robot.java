@@ -13,13 +13,11 @@ import frc.team3100.robot.subsystems.*;
 
 
 public class Robot extends IterativeRobot{
-    private Command AutoLeft;
-    private Command AutoRight;
-    private Command AutoCenter;
-    private Command ButtonCheck;
-    private Command AutoChosen;
+    private ClawButton ButtonCheck;
     private Command ElevatorMotion;
-    private SendableChooser autoChoice;
+    private Command AutoChosen;
+    public SendableChooser <Character> autoChoice;
+    private boolean ran = false;
     // Define subsystems for Commands to access
     public static Claw claw;
     public static Elevator elevator;
@@ -32,15 +30,18 @@ public class Robot extends IterativeRobot{
     public static String gameData;
     private static final int IMG_WIDTH = 320;
     private static final int IMG_HEIGHT = 240;
+    private int time;
+    private int autoTime = 0;
 
 
     public void robotInit() {
 
         //creating a camera object and defining its characteristics
-        UsbCamera server = CameraServer.getInstance().startAutomaticCapture("cam0", 0);
+        UsbCamera server = CameraServer.getInstance().startAutomaticCapture("cam2", 0);
         server.setBrightness(20);
         server.setResolution(IMG_WIDTH, IMG_HEIGHT);
         gameData = DriverStation.getInstance().getGameSpecificMessage();
+
         //Creates instances of all of the subsystems for the commands to access.
         claw = new Claw();
         elevator = new Elevator();
@@ -48,14 +49,9 @@ public class Robot extends IterativeRobot{
         drive = new MainDrive();
         ButtonCheck = new ClawButton();
 
-
-
-        // ALWAYS initialize OI last
+        // ALWAYS initialize OI after subsystems
         oi = new OI();
 
-        AutoCenter = new AutoRunCenter();
-        AutoRight = new AutoRunRight();
-        AutoLeft = new AutoRunLeft();
 
         //Unless you need something from it...
         ElevatorMotion = new ElevatorMotion();
@@ -74,29 +70,38 @@ public class Robot extends IterativeRobot{
         RobotMap.gyro.calibrate();
 
 
-        autoChoice = new SendableChooser();
-        autoChoice.addObject("Center", AutoCenter);
-        autoChoice.addDefault("Left", AutoLeft);
-        autoChoice.addObject("Right", AutoRight);
-        SmartDashboard.putData(autoChoice);
-        SmartDashboard.putString("welp","okay");
+        autoChoice = new SendableChooser<>();
+        autoChoice.addDefault("Auto-Run",'A');
+        autoChoice.addObject("Left", 'L');
+        autoChoice.addObject("Center", 'C');
+        autoChoice.addObject("Right", 'R');
+        SmartDashboard.putData("Autonomous",autoChoice);
 
 
 
     }
+
 
     public void autonomousInit() {
         RobotMap.gyro.reset();
         // What to run ONCE at the beginning of the autonomous period
         gameData = DriverStation.getInstance().getGameSpecificMessage();
-        AutoChosen = (Command) autoChoice.getSelected();
-        AutoChosen.start();
         autoVal = true;
     }
 
     public void autonomousPeriodic() {
         // Running auto code for the first 15 seconds of the match.
+        if(!ran) {
+            if (gameData.length() == 0 && autoTime < 200) {
+                gameData = DriverStation.getInstance().getGameSpecificMessage();
+            } else {
+                AutoChosen = new AutoMaster(autoChoice.getSelected(),gameData);
+                AutoChosen.start();
+                ran = true;
+            }
+        }
         Scheduler.getInstance().run();
+        autoTime += 1;
         SmartDashboard.putBoolean("autoVal",autoVal);
     }
 
@@ -124,8 +129,7 @@ public class Robot extends IterativeRobot{
         SmartDashboard.putBoolean("cubeHeld",Robot.oi.cubeHeld);
         SmartDashboard.putBoolean("test",Robot.oi.test);
         SmartDashboard.putBoolean("test2",Robot.oi.test2);
-        SmartDashboard.putData(autoChoice);
-
+        SmartDashboard.putData("Autonomous",autoChoice);
 
     }
 
