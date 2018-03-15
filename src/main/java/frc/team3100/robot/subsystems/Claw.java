@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team3100.robot.Robot;
 import frc.team3100.robot.RobotMap;
+import frc.team3100.robot.commands.ClawCollect;
 
 
 public class Claw extends Subsystem {
@@ -15,12 +16,12 @@ public class Claw extends Subsystem {
     private static Solenoid clawClose = RobotMap.UPP1;
     private static DigitalInput clawButton = RobotMap.clawButton;
 
-    private double wheelSpeed = .6;
+    private double wheelSpeed = .75;
 
 
     @Override
     protected void initDefaultCommand() {
-
+        setDefaultCommand(new ClawCollect());
     }
 
     // Uses pneumatics to open/close the claw. Can be used to grab boxes from different orientations.
@@ -35,24 +36,20 @@ public class Claw extends Subsystem {
     }
 
     // Changes the speed of the wheels to intake or output the power cube.
-    public void collect() {
-        clawMotors.set(-wheelSpeed);
-        SmartDashboard.putBoolean("ClawTest2",true);
+    public void collect(double triggerSpeed) {
+        clawMotors.set(-triggerSpeed);
     }
 
     public void score() {
         if(Robot.autoVal) {
             clawMotors.set(wheelSpeed);
-
         } else {
-            clawMotors.set(wheelSpeed + .3);
-
+            clawMotors.set(wheelSpeed + .15);
         }
-
     }
+
     public void stop() {
         clawMotors.set(0);
-        SmartDashboard.putBoolean("ClawTest2",false);
     }
 
     public void buttonCheck() {

@@ -18,8 +18,7 @@ public class ClawCollect extends Command {
 
     @Override
     public void execute() {
-        Robot.claw.collect();
-        Robot.elevator.move(-.2);
+        Robot.claw.collect(Robot.oi.getLeftTrigger());
     }
 
     public boolean isFinished() {
@@ -28,11 +27,10 @@ public class ClawCollect extends Command {
 
     @Override
     public void end() {
-        Robot.claw.stop();
+
     }
 
     public void interrupted() {
-        Robot.claw.stop();
 
     }
 }

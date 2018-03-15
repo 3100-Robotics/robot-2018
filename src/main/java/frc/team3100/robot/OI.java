@@ -14,7 +14,6 @@ public class OI {
     private XBoxTech techControls = RobotMap.techControls;
 
     private Button clawOutput = new JoystickButton(techControls, XBoxTech.leftBumper);
-    private Button clawInput = new JoystickButton(techControls,XBoxTech.rightBumper);
     private Button clawOpenClose = new JoystickButton(techControls,XBoxTech.aButton);
 
     private Button rampDeployButton = new JoystickButton(driveControls, XBoxDrive.backButton);
@@ -29,6 +28,7 @@ public class OI {
     public boolean test = true;
     public boolean test2 = true;
     public boolean platState = false;
+    public int autoRan = 0;
 
     public int distanceDriven = 0;
 
@@ -51,7 +51,6 @@ public class OI {
 
         clawOpenClose.whenPressed(new ClawGrab());
         clawOutput.whileHeld(new ClawSpit());
-        clawInput.whileHeld(new ClawCollect());
 
         rampDeployButton.whenPressed(new PlatformRelease());
         rampRaiseButton.whenPressed(new PlatformRampUp());
