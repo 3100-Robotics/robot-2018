@@ -4,25 +4,25 @@ import edu.wpi.first.wpilibj.Joystick;
 
 public class XBoxDrive extends Joystick {
 
-        //Setup all of the ports on the XBox controller
-        public static final int rightXAxis = 4;
-        public static final int rightYAxis = 5;
-        public static final int leftXAxis = 0;
-        public static final int leftYAxis = 1;
+    //Setup all of the ports on the XBox controller
+    private static final int rightXAxis = 4;
+    private static final int rightYAxis = 5;
+    private static final int leftXAxis = 0;
+    private static final int leftYAxis = 1;
 
-        public static final int aButton = 1;
-        public static final int bButton = 2;
-        public static final int xButton = 3;
-        public static final int yButton = 4;
+    public static final int aButton = 1;
+    public static final int bButton = 2;
+    public static final int xButton = 3;
+    public static final int yButton = 4;
 
-        public static final int rightBumper = 6;
-        public static final int leftBumper = 5;
+    public static final int rightBumper = 6;
+    public static final int leftBumper = 5;
 
-        public static final int backButton = 7;
-        public static final int startButton = 8;
+    public static final int backButton = 7;
+    public static final int startButton = 8;
 
-        public static final int rightTrigger = 2;
-        public static final int leftTrigger = 3;
+    public static final int rightTrigger = 3;
+    public static final int leftTrigger = 2;
 
     public XBoxDrive(int port) {
             super(port);

@@ -18,12 +18,13 @@ public class RobotMap {
     private static int platformChannel = 5;
     private static int platformDeployLeftChannel = 6;
     private static int platformDeployRightChannel = 7;
+    private static int climberMotorChannel = 8;
 
 
     //     P C M
     private static int clawGrabChannel = 0;
     private static int UUP1Channel = 1;
-    private static int  UPP2Channel = 2;
+    private static int UPP2Channel = 2;
     private static int UPP3Channel = 3;
     private static int rampLeftRaiseChannel = 4;
     private static int UPP5Channel = 5;
@@ -48,6 +49,7 @@ public class RobotMap {
     public static SpeedController elevatorMotor = new Spark(elevatorChannel);
     public static SpeedController clawMotors = new Spark(clawChannel);
     public static SpeedController platformMotor = new Spark(platformChannel);
+    public static SpeedController climbMotor = new Spark(climberMotorChannel);
 
     //    Initialize pneumatic controllers
     public static Solenoid clawGrabber = new Solenoid(clawGrabChannel);

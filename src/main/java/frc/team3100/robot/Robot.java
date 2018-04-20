@@ -13,15 +13,17 @@ import frc.team3100.robot.subsystems.*;
 
 
 public class Robot extends IterativeRobot{
-    private ClawButton ButtonCheck;
     private Command ElevatorMotion;
     private Command AutoChosen;
-    public SendableChooser <Character> autoChoice;
+    private SendableChooser <Character> autoChoice;
+    private SendableChooser <Character> autoType;
+    private SendableChooser <Character> autoPriority;
+    private SendableChooser <Character> autoFar;
     private boolean ran = false;
     // Define subsystems for Commands to access
     public static Claw claw;
+    public static Climber climber;
     public static Elevator elevator;
-    public static Platform platform;
     public static MainDrive drive;
     public static OI oi;
 
@@ -30,13 +32,12 @@ public class Robot extends IterativeRobot{
     public static String gameData;
     private static final int IMG_WIDTH = 320;
     private static final int IMG_HEIGHT = 240;
-    private int time;
     private int autoTime = 0;
 
 
     public void robotInit() {
 
-        //creating a camera object and defining its characteristics
+        //Creating a camera object and defining its characteristics
         UsbCamera server = CameraServer.getInstance().startAutomaticCapture("cam2", 0);
         server.setBrightness(20);
         server.setResolution(IMG_WIDTH, IMG_HEIGHT);
@@ -44,10 +45,9 @@ public class Robot extends IterativeRobot{
 
         //Creates instances of all of the subsystems for the commands to access.
         claw = new Claw();
+        climber = new Climber();
         elevator = new Elevator();
-        platform = new Platform();
         drive = new MainDrive();
-        ButtonCheck = new ClawButton();
 
         // ALWAYS initialize OI after subsystems
         oi = new OI();
@@ -77,6 +77,20 @@ public class Robot extends IterativeRobot{
         autoChoice.addObject("Right", 'R');
         SmartDashboard.putData("Autonomous",autoChoice);
 
+        autoType = new SendableChooser<>();
+        autoType.addObject("In Front of Switch", 'O');
+        autoType.addDefault("To the Side of the Switch",'N');
+        SmartDashboard.putData("Type", autoType);
+
+        autoPriority = new SendableChooser<>();
+        autoPriority.addDefault("Scale",'C');
+        autoPriority.addObject("Switch",'W');
+        SmartDashboard.putData("Priority",autoPriority);
+
+        autoFar = new SendableChooser<>();
+        autoFar.addDefault("Yes",'Y');
+        autoFar.addObject("No", 'N');
+        SmartDashboard.putData("Far Side",autoFar);
 
 
     }
@@ -95,7 +109,7 @@ public class Robot extends IterativeRobot{
             if (gameData.length() == 0 && autoTime < 200) {
                 gameData = DriverStation.getInstance().getGameSpecificMessage();
             } else {
-                AutoChosen = new AutoMaster(autoChoice.getSelected(),gameData);
+                AutoChosen = new AutoMaster(autoChoice.getSelected(),gameData,autoType.getSelected(),autoPriority.getSelected(),autoFar.getSelected());
                 AutoChosen.start();
                 ran = true;
             }
@@ -113,7 +127,6 @@ public class Robot extends IterativeRobot{
                 AutoChosen.cancel();
             }
         }
-        ButtonCheck.start();
         ElevatorMotion.start();
         autoVal = false;
         RobotMap.platformDeployLeft.set(.3);
@@ -130,12 +143,14 @@ public class Robot extends IterativeRobot{
         SmartDashboard.putBoolean("test",Robot.oi.test);
         SmartDashboard.putBoolean("test2",Robot.oi.test2);
         SmartDashboard.putData("Autonomous",autoChoice);
+        SmartDashboard.putString("autoPriority",gameData + autoPriority.getSelected() + autoType.getSelected() + autoChoice.getSelected());
 
     }
 
      public void testInit() {
-        // Setting autoVal equal to false so the auto code doesn't run.
-        autoVal = false;
+         autoVal = false;
+         // this is the part where Anne gets to write whatever the frickity fraack she wants
+
     }
 
     public void testPeriodic() {

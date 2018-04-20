@@ -18,8 +18,8 @@ public class XBoxTech extends Joystick {
         public static final int rightBumper = 6;
         public static final int leftBumper = 5;
 
-        public static final int rightTrigger = 2;
-        public static final int leftTrigger = 3;
+        public static final int rightTrigger = 3;
+        public static final int leftTrigger = 2;
 
 
     public XBoxTech(int port) {

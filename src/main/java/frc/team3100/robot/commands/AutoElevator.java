@@ -13,7 +13,7 @@ public class AutoElevator extends Command {
         super("AutoElevator");
         requires(Robot.elevator);
         if(location == "switch") {
-            timeStop = 40;
+            timeStop = 80;
         } else {
             timeStop = 150;
         }

@@ -4,7 +4,6 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team3100.robot.Robot;
 import frc.team3100.robot.RobotMap;
-import frc.team3100.robot.XBoxDrive;
 import frc.team3100.robot.XBoxTech;
 
 public class ClawDrive extends Command {
@@ -28,7 +27,7 @@ public class ClawDrive extends Command {
         if(controller.getLeftTrigger() > triggerError) {
             Robot.claw.run(controller.getLeftTrigger());
         } else if(controller.getRightBumper()) {
-            Robot.claw.run(.9);
+            Robot.claw.run(-.9);
         } else {
             Robot.claw.run(0);
         }

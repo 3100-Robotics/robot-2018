@@ -13,11 +13,10 @@ public class OI {
     private XBoxDrive driveControls = RobotMap.driveControls;
     private XBoxTech techControls = RobotMap.techControls;
 
+    private Button clawCollect = new JoystickButton(techControls,XBoxTech.rightBumper);
     private Button clawOutput = new JoystickButton(techControls, XBoxTech.leftBumper);
     private Button clawOpenClose = new JoystickButton(techControls,XBoxTech.aButton);
 
-    private Button rampDeployButton = new JoystickButton(driveControls, XBoxDrive.backButton);
-    private Button rampRaiseButton = new JoystickButton(driveControls, XBoxDrive.yButton);
 
 
 
@@ -49,11 +48,9 @@ public class OI {
 
     public OI() {
 
-        clawOpenClose.whenPressed(new ClawGrab());
-        clawOutput.whileHeld(new ClawSpit());
 
-        rampDeployButton.whenPressed(new PlatformRelease());
-        rampRaiseButton.whenPressed(new PlatformRampUp());
+
+
 
     }
 }

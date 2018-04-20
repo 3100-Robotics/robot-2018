@@ -1,59 +1,34 @@
 package frc.team3100.robot.subsystems;
 
-import edu.wpi.first.wpilibj.*;
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team3100.robot.Robot;
 import frc.team3100.robot.RobotMap;
-import frc.team3100.robot.commands.ClawCollect;
+import frc.team3100.robot.commands.Climbing;
 
 
-public class Claw extends Subsystem {
+public class Climber extends Subsystem {
 
     // Defining objects from RobotMap that control the claw
-    private static SpeedController clawMotors = RobotMap.clawMotors;
-    private static Solenoid clawGrabber = RobotMap.clawGrabber;
-    private static Solenoid clawClose = RobotMap.UPP1;
-    private static DigitalInput clawButton = RobotMap.clawButton;
-
+    private static SpeedController climbMotors = RobotMap.climbMotor;
     private double wheelSpeed = .75;
 
 
     @Override
     protected void initDefaultCommand() {
-        setDefaultCommand(new ClawCollect());
+        setDefaultCommand(new Climbing());
     }
 
-    // Uses pneumatics to open/close the claw. Can be used to grab boxes from different orientations.
-    public void open() {
-        clawGrabber.set(true);
-        clawClose.set(false);
+    public void move(double speed) {
+        climbMotors.set(speed);
     }
 
-    public void close() {
-        clawGrabber.set(false);
-        clawClose.set(true);
-    }
 
-    // Changes the speed of the wheels to intake or output the power cube.
-    public void collect(double triggerSpeed) {
-        clawMotors.set(-triggerSpeed);
-    }
-
-    public void score() {
-        if(Robot.autoVal) {
-            clawMotors.set(wheelSpeed);
-        } else {
-            clawMotors.set(wheelSpeed + .15);
-        }
-    }
 
     public void stop() {
-        clawMotors.set(0);
-    }
-
-    public void buttonCheck() {
-
+        climbMotors.set(0);
     }
 
 
