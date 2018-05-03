@@ -27,6 +27,16 @@ public class Claw extends Subsystem {
 
 
     public void stop() {
+    }
+
+    public void open() {
+        RobotMap.clawCloser.set(false);
+        RobotMap.clawOpener.set(true);
+    }
+
+    public void close() {
+        RobotMap.clawOpener.set(false);
+        RobotMap.clawCloser.set(true);
 
     }
 

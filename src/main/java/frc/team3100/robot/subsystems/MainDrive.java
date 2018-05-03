@@ -93,17 +93,18 @@ public class MainDrive extends Subsystem {
     private DifferentialDrive mainDrive = new DifferentialDrive(leftMotor,rightMotor);
     private Counter leftRotSensor = RobotMap.leftDriveCounter;
     private Counter rightRotSensor = RobotMap.rightDriveCounter;
-    private double targetMove = 0;
+    private double changeTurn;
+    private double changeDrive;
+    private double limit = 0.1;
+    private double limitedJoystickDrive;
+    private double limitedJoystickTurn;
+
 
     @Override
     protected void initDefaultCommand() {
         setDefaultCommand(new Drive());
     }
-    double changeTurn;
-    double changeDrive;
-    double limit = 0.1;
-    double limitedJoystickDrive;
-    double limitedJoystickTurn;
+
 
 
     public void drive(double move, double rotate) {

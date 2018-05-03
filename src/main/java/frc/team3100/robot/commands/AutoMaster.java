@@ -22,8 +22,6 @@ TO COLLECT A CUBE:
 addSequential(new AutoCubeCollect());
 
 */
-// LILY DID ALL OF THIS GIVE US CHEESECAKE
-//Lily did all of this give us cheesecake
 public class AutoMaster extends CommandGroup {
     public AutoMaster(Character autoChoice, String autoData, Character autoType, Character autoPriority, Character autoFar) {
         SmartDashboard.putString("INPUT",autoData + autoChoice + autoPriority + autoType);
@@ -35,19 +33,15 @@ public class AutoMaster extends CommandGroup {
         }
 
         if (autoChoice == 'A') {
-            SmartDashboard.putString("AutoRan", "A1");
             addSequential(new AutoDriveForwards(28));
             addParallel(new AutoDriveBackwards(4));
         }
 
         if (autoType == 'O') {
-            SmartDashboard.putString("YOU RAN OLD CODE!!","true");
             if (autoChoice == 'A') {
-                SmartDashboard.putString("AutoRan", "A");
                 addSequential(new AutoDriveForwards(28));
                 addParallel(new AutoDriveBackwards(4));
             } else if (autoChoice == 'R') {
-                SmartDashboard.putString("AutoRan", "R");
                 if (Robot.gameData.charAt(0) == 'R') {
                     addParallel(new AutoElevator("switch"));
 
@@ -68,7 +62,6 @@ public class AutoMaster extends CommandGroup {
                     addSequential(new AutoDriveForwards(28));
                 }
             } else if (autoChoice == 'L') {
-                SmartDashboard.putString("AutoRan", "L");
                 if (autoData.charAt(0) == 'L') {
                     addParallel(new AutoElevator("switch"));
                     addSequential(new AutoDriveForwards(28));
@@ -89,7 +82,6 @@ public class AutoMaster extends CommandGroup {
                     addParallel(new AutoDriveBackwards(6));
                 }
             } else if (autoChoice == 'C') {
-                SmartDashboard.putString("AutoRan", "C");
                 if (Robot.gameData.charAt(0) == 'R') {
                     addSequential(new AutoDriveForwards(6));
                     addParallel(new AutoElevator("switch"));
@@ -114,7 +106,6 @@ public class AutoMaster extends CommandGroup {
                         addSequential(new AutoDriveForwards(43));
                         addParallel(new AutoElevator("switch"));
                         addSequential(new AutoDriveTurnRight(90));
-                        SmartDashboard.putString("AIDEN","AIDEN");
                         addSequential(new AutoDriveForwards(4));
                         addSequential(new AutoCubeScore());
                     } else {

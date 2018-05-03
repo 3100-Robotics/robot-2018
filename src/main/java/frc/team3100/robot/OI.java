@@ -15,7 +15,7 @@ public class OI {
 
     private Button clawCollect = new JoystickButton(techControls,XBoxTech.rightBumper);
     private Button clawOutput = new JoystickButton(techControls, XBoxTech.leftBumper);
-    private Button clawOpenClose = new JoystickButton(techControls,XBoxTech.aButton);
+    public Button clawOpenClose = new JoystickButton(techControls,XBoxTech.aButton);
 
 
 
@@ -47,7 +47,7 @@ public class OI {
 
 
     public OI() {
-
+        clawOpenClose.whenPressed(new ClawActuate());
 
 
 

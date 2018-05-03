@@ -22,8 +22,8 @@ public class RobotMap {
 
 
     //     P C M
-    private static int clawGrabChannel = 0;
-    private static int UUP1Channel = 1;
+    private static int clawCloseChannel = 0;
+    private static int clawOpenChannel = 1;
     private static int UPP2Channel = 2;
     private static int UPP3Channel = 3;
     private static int rampLeftRaiseChannel = 4;
@@ -52,8 +52,8 @@ public class RobotMap {
     public static SpeedController climbMotor = new Spark(climberMotorChannel);
 
     //    Initialize pneumatic controllers
-    public static Solenoid clawGrabber = new Solenoid(clawGrabChannel);
-    public static Solenoid UPP1 = new Solenoid(UUP1Channel);
+    public static Solenoid clawCloser = new Solenoid(clawCloseChannel);
+    public static Solenoid clawOpener = new Solenoid(clawOpenChannel);
     public static Solenoid rampLeftRaise = new Solenoid(rampLeftRaiseChannel);
     public static Solenoid UPP3 = new Solenoid(UPP3Channel);
     public static Solenoid UPP2 = new Solenoid(UPP2Channel);

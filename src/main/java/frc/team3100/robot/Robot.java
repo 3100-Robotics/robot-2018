@@ -60,10 +60,10 @@ public class Robot extends IterativeRobot{
         RobotMap.rightDriveCounter.setDistancePerPulse(1);
 
         SmartDashboard.putData("MainDrive", drive);
-        RobotMap.clawGrabber.set(false);
+        RobotMap.clawOpener.set(false);
         RobotMap.rampLeftRaise.set(false);
         RobotMap.UPP2.set(false);
-        RobotMap.UPP1.set(true);
+        RobotMap.clawCloser.set(true);
         RobotMap.UPP3.set(true);
         RobotMap.UPP5.set(true);
         RobotMap.elevatorCounter.reset();
