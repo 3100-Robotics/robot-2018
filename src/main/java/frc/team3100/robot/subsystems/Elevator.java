@@ -37,8 +37,8 @@ public class Elevator extends Subsystem {
             elevatorMotor.set(0);
             SmartDashboard.putNumber("elevatorValues",0);
         } else {
-            if (limitedSpeed < -.5) {
-                limitedSpeed = -.5;
+            if (limitedSpeed < -.8) {
+                limitedSpeed = -.8;
             }
             elevatorMotor.set(limitedSpeed);
         }

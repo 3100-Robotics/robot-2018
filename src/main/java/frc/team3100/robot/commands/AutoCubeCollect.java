@@ -1,7 +1,6 @@
 package frc.team3100.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
-import frc.team3100.robot.Robot;
 
 
 public class AutoCubeCollect extends CommandGroup {

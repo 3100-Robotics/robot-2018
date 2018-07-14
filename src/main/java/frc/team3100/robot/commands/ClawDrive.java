@@ -27,7 +27,7 @@ public class ClawDrive extends Command {
         if(controller.getLeftTrigger() > triggerError) {
             Robot.claw.run(controller.getLeftTrigger());
         } else if(controller.getRightTrigger() > triggerError) {
-            Robot.claw.run(controller.getRightTrigger());
+            Robot.claw.run(-controller.getRightTrigger());
         } else {
             Robot.claw.run(0);
         }

@@ -6,28 +6,32 @@ import frc.team3100.robot.Robot;
 import frc.team3100.robot.RobotMap;
 import frc.team3100.robot.XBoxTech;
 
-public class Climbing extends Command {
-    public Climbing() {
-        super("Climbing");
-        requires(Robot.climber);
+public class ClimbingPiston extends Command {
+    public ClimbingPiston() {
+        super("ClimbingPiston");
     }
 
-    private static XBoxTech controller = RobotMap.techControls;
     @Override
     public void initialize() {
-
+        if(Robot.oi.climbState) {
+            Robot.climber.out();
+            Robot.oi.climbState = false;
+        } else {
+            Robot.climber.in();
+            Robot.oi.climbState = true;
+        }
     }
 
     @Override
     public void execute() {
-        SmartDashboard.putNumber("ClimbVal",controller.getRightStickY());
-        Robot.climber.move(controller.getRightStickY());
+
 
     }
 
     public boolean isFinished() {
-        return false;
+        return true;
     }
+
     @Override
     public void end() {
 

@@ -26,8 +26,8 @@ public class RobotMap {
     private static int clawOpenChannel = 1;
     private static int UPP2Channel = 2;
     private static int UPP3Channel = 3;
-    private static int rampLeftRaiseChannel = 4;
-    private static int UPP5Channel = 5;
+    private static int climbOutChannel = 4;
+    private static int climbInChannel = 5;
 
     //     D I O
     private static int driveLeftCounterChannel = 2;
@@ -54,10 +54,10 @@ public class RobotMap {
     //    Initialize pneumatic controllers
     public static Solenoid clawCloser = new Solenoid(clawCloseChannel);
     public static Solenoid clawOpener = new Solenoid(clawOpenChannel);
-    public static Solenoid rampLeftRaise = new Solenoid(rampLeftRaiseChannel);
-    public static Solenoid UPP3 = new Solenoid(UPP3Channel);
+    public static Solenoid climbOut = new Solenoid(climbOutChannel);
+    public static Solenoid climbIn = new Solenoid(climbInChannel);
     public static Solenoid UPP2 = new Solenoid(UPP2Channel);
-    public static Solenoid UPP5 = new Solenoid(UPP5Channel);
+    public static Solenoid UPP3 = new Solenoid(UPP3Channel);
 
     //    Initialize servos
     public static Servo platformDeployLeft = new Servo(RobotMap.platformDeployLeftChannel);

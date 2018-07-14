@@ -18,7 +18,7 @@ public class AutoCubeScore extends Command {
     }
 
     protected void execute() {
-        Robot.claw.run(-.9);
+        Robot.claw.run(1);
         time += 1;
 
 

@@ -96,6 +96,7 @@ public class MainDrive extends Subsystem {
     private double changeTurn;
     private double changeDrive;
     private double limit = 0.1;
+    private double limitRot = 0.08;
     private double limitedJoystickDrive;
     private double limitedJoystickTurn;
 
@@ -123,10 +124,10 @@ public class MainDrive extends Subsystem {
             move += .1;
         }
         changeTurn = rotate - limitedJoystickTurn;
-        if(changeTurn > limit) {
-            changeTurn = limit;
-        } else if (changeTurn < -limit) {
-            changeTurn = -limit;
+        if(changeTurn > limitRot) {
+            changeTurn = limitRot;
+        } else if (changeTurn < -limitRot) {
+            changeTurn = -limitRot;
         }
         limitedJoystickTurn += changeTurn;
 

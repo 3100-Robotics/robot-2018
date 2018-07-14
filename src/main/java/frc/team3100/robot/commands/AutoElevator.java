@@ -1,7 +1,6 @@
 package frc.team3100.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.team3100.robot.Robot;
 
 
@@ -12,7 +11,7 @@ public class AutoElevator extends Command {
     public AutoElevator(String location) {
         super("AutoElevator");
         requires(Robot.elevator);
-        if(location == "switch") {
+        if(location.equals("switch")) {
             timeStop = 80;
         } else {
             timeStop = 150;
@@ -30,17 +29,14 @@ public class AutoElevator extends Command {
             Robot.elevator.move(.3);
         } else {
             Robot.elevator.move(0);
+            timeState = true;
         }
         time += 1;
     }
 
 
     protected boolean isFinished() {
-        if(timeState) {
-            return true;
-        } else {
-            return false;
-        }
+        return timeState;
     }
 
 

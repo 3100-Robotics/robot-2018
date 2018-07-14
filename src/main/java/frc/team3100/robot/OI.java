@@ -16,6 +16,7 @@ public class OI {
     private Button clawCollect = new JoystickButton(techControls,XBoxTech.rightBumper);
     private Button clawOutput = new JoystickButton(techControls, XBoxTech.leftBumper);
     public Button clawOpenClose = new JoystickButton(techControls,XBoxTech.aButton);
+    public Button climbingButton = new JoystickButton(techControls,XBoxTech.bButton);
 
 
 
@@ -23,6 +24,7 @@ public class OI {
     // Defining state variables to log the states of different subsystems
     public boolean clawOpenState = false;
     public boolean clawCollectState = false;
+    public boolean climbState = false;
     public boolean cubeHeld = false;
     public boolean test = true;
     public boolean test2 = true;
@@ -48,7 +50,7 @@ public class OI {
 
     public OI() {
         clawOpenClose.whenPressed(new ClawActuate());
-
+        climbingButton.whenPressed(new ClimbingPiston());
 
 
 

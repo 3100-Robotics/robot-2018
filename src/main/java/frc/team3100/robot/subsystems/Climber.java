@@ -25,7 +25,16 @@ public class Climber extends Subsystem {
         climbMotors.set(speed);
     }
 
+    public void out() {
+        RobotMap.climbOut.set(true);
+        RobotMap.climbIn.set(false);
+    }
 
+    public void in() {
+        RobotMap.climbOut.set(false);
+        RobotMap.climbIn.set(true);
+
+    }
 
     public void stop() {
         climbMotors.set(0);

@@ -44,8 +44,7 @@ public class AutoMaster extends CommandGroup {
             } else if (autoChoice == 'R') {
                 if (Robot.gameData.charAt(0) == 'R') {
                     addParallel(new AutoElevator("switch"));
-
-          addSequential(new AutoDriveForwards(28));
+                    addSequential(new AutoDriveForwards(28));
                     addSequential(new AutoCubeScore());
                     addParallel(new AutoDriveBackwards(10));
 
@@ -118,6 +117,9 @@ public class AutoMaster extends CommandGroup {
                             addSequential(new AutoDriveTurnRight(90));
                             addSequential(new AutoDriveForwards(3));
                             addSequential(new AutoCubeScore());
+                        } else {
+                            addSequential(new AutoDriveForwards(28));
+                            addParallel(new AutoDriveBackwards(4));
                         }
                     }
                 } else if(autoChoice == 'R') {
@@ -130,13 +132,18 @@ public class AutoMaster extends CommandGroup {
                         addSequential(new AutoCubeScore());
                     } else {
                         //Right Side Far Switch
-                        addSequential(new AutoDriveForwards(66));
-                        addSequential(new AutoDriveTurnLeft(90));
-                        addParallel(new AutoElevator("switch"));
-                        addSequential(new AutoDriveForwards(54));
-                        addSequential(new AutoDriveTurnLeft(90));
-                        addSequential(new AutoDriveForwards(3));
-                        addSequential(new AutoCubeScore());
+                        if(autoFar == 'Y') {
+                            addSequential(new AutoDriveForwards(60));
+                            addSequential(new AutoDriveTurnLeft(40));
+                            addParallel(new AutoElevator("switch"));
+                            addSequential(new AutoDriveForwards(54));
+                            addSequential(new AutoDriveTurnLeft(90));
+                            addSequential(new AutoDriveForwards(3));
+                            addSequential(new AutoCubeScore());
+                        } else {
+                            addSequential(new AutoDriveForwards(28));
+                            addParallel(new AutoDriveBackwards(4));
+                        }
                     }
                 }
             } else {
@@ -158,12 +165,19 @@ public class AutoMaster extends CommandGroup {
                         addSequential(new AutoCubeScore());
                     }
                 } else if (autoChoice == 'R') {
-                    if(autoData.charAt(0) == 'R') {
+                    if(autoData.charAt(1) == 'R') {
                         //Right Side Near Scale
-                        addSequential(new AutoDriveForwards(92));
-                        addParallel(new AutoElevator("scale"));
-                        addSequential(new AutoDriveTurnLeft(90));
+                        SmartDashboard.putString("AUTOISWORKING","AUTOOOOOO");
+                        addSequential(new AutoDriveForwardsScale(92));
+                        addSequential(new AutoDriveTurnLeft(50));
+                        addSequential(new AutoDriveBackwards(6));
+                        addParallel(new AutoElevator("switch"));
+                        addSequential(new AutoDriveBackwards(12));
+                        addSequential(new AutoDriveForwards(6));
+                        addSequential(new AutoDriveBackwards(1));
                         addSequential(new AutoCubeScore());
+
+
                     } else {
                         //Right Side Far Scale
                         addSequential(new AutoDriveForwards(63));
@@ -171,8 +185,7 @@ public class AutoMaster extends CommandGroup {
                         addSequential(new AutoDriveForwards(56));
                         addParallel(new AutoElevator("scale"));
                         addSequential(new AutoDriveTurnRight(90));
-                        addSequential(new AutoDriveForwards(14));
-                        addSequential(new AutoCubeScore());
+                        addSequential(new AutoDriveForwards(8));
                     }
                 }
             }

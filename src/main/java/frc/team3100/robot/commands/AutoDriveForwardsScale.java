@@ -5,16 +5,15 @@ import frc.team3100.robot.Robot;
 import frc.team3100.robot.subsystems.MainDrive;
 
 
-public class AutoDriveBackwards extends Command {
+public class AutoDriveForwardsScale extends Command {
 
     private double targetValue;
     private int time = 0;
     private int checkVal;
     private int currentVal;
     private boolean finished = false;
-
-    public AutoDriveBackwards(double targetVal) {
-        super("AutoDriveBackwards");
+    public AutoDriveForwardsScale(double targetVal) {
+        super("AutoDriveForwardsScale");
         requires(Robot.drive);
         targetValue = targetVal;
 
@@ -28,7 +27,7 @@ public class AutoDriveBackwards extends Command {
 
     protected void execute() {
 
-        drive.drive(.85, 0);
+        drive.drive(-.9, .11);
         if(time == 50) {
             checkVal = Robot.drive.storedValRight;
 
@@ -41,11 +40,12 @@ public class AutoDriveBackwards extends Command {
         }
         time += 1;
 
+
     }
 
 
     protected boolean isFinished() {
-        if(Robot.drive.storedValRight <= -targetValue || finished) {
+        if(Robot.drive.storedValRight >= targetValue || finished) {
             return true;
         } else {
             return false;
