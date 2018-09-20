@@ -158,5 +158,13 @@ public class Robot extends IterativeRobot{
         Scheduler.getInstance().run();
     }
 
+    public void disabledInit() {
+
+    }
+
+    public void disabledPeriodic() {
+
+    }
+
 }
 
